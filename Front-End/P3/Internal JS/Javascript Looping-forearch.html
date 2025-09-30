@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Looping (Nested)</title>
+</head>
+<body>
+    <script>
+        //Menggunakan for dengan operator in
+        var lang = ["HTML", "Javascript", "CSS", "Typescript"];
+        for (i in lang) {
+            console.log(lang[i] + "<br/>");
+            document.write(i + ".  " + lang[i] + "<br/>");
+            }
+        //Menggunakan for tanpa operator in
+        for (i = 0; i < lang.length; i++) {
+            console.log(lang[i] + "<br/>");
+            document.write(i + ".  " + lang[i] + "<br/>");
+            }
+    </script>
+</body>
+</html>
