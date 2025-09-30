@@ -1,0 +1,16 @@
+//Menggunakan for dengan operator in
+var lang = ["HTML", "Javascript", "CSS", "Typescript"];
+for (i in lang) {
+    console.log(lang[i] + "<br/>");
+    document.write(i + ".  " + lang[i] + "<br/>");
+}
+//Menggunakan for tanpa operator in
+for (i = 0; i < lang.length; i++) {
+    console.log(lang[i] + "<br/>");
+    document.write(i + ".  " + lang[i] + "<br/>");
+}
+// forEach
+lang.forEach(function(item, index) {
+    console.log(item + "<br/>");
+    document.write(index + ".  " + item + "<br/>");
+});

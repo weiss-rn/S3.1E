@@ -1,0 +1,4 @@
+var jwb = prompt("Apakah jakarta ibu kota indonesia?");
+var jawaban = (jwb == "iya") ? "benar" : "salah";
+console.log(jawaban);
+document.write('Jawaban anda adalah ' + jawaban);
