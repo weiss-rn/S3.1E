@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bitwise Operators</title>
+</head>
+<body>
+    <script>
+        var a = 10;
+        var b = 5;
+
+        // Bitwise Operators
+        //AND
+        var result = a & b;
+        console.log(result);
+        document.write('${a} & ${b} = ${result}<br/>');
+        //OR
+        var result = a | b;
+        console.log(result);
+        document.write('${a} | ${b} = ${result}<br/>');
+        //XOR
+        var result = a ^ b;
+        console.log(result);
+        document.write('${a} ^ ${b} = ${result}<br/>');
+        //NOT
+        var result = ~a;
+        console.log(result);
+        document.write('~${a} = ${result}<br/>');
+        //Left Shift
+        var result = a << b;
+        console.log(result);
+        document.write('${a} << ${b} = ${result}<br/>');
+        //Right Shift
+        var result = a >> b;
+        console.log(result);
+        document.write('${a} >> ${b} = ${result}<br/>');
+        //Unsigned Right Shift
+        var result = a >>> b;
+        console.log(result);
+        document.write('${a} >>> ${b} = ${result}<br/>');
+    </script>
+</body>
+</html>
