@@ -1,0 +1,40 @@
+{
+    "routes": {
+        "welcome": {
+            "path": "/",
+            "message": "Selamat Datang Di Produk UMKM"
+        },
+        "snack": {
+            "path": "/produk/snack",
+            "message": "Halaman Produk Semua Snack",
+            "detail": {
+                "path": "/produk/snack/<id>",
+                "message": "Halaman Produk Makanan dengan id == {id}"
+            }
+        },
+        "drinks": {
+            "path": "/produk/Soft_drink",
+            "message": "Halaman Produk Soft Drink",
+            "detail": {
+                "path": "/produk/Soft_drink/<id>",
+                "message": "Halaman Produk Minuman dengan id == {id}"
+            }
+        }
+    },
+    "data": {
+        "snack": [
+            { "id": 1, "name": "Kue kering-1", "price": 10000 },
+            { "id": 2, "name": "Kue Basah-1", "price": 15000 },
+            { "id": 3, "name": "Kue kering-2", "price": 20000 },
+            { "id": 4, "name": "Kue basi", "price": 25000 },
+            { "id": 5, "name": "Kue Basah-2", "price": 10000 }
+        ],
+        "drinks": [
+            { "id": 1, "name": "Teh", "price": 7000 },
+            { "id": 2, "name": "Kopi", "price": 5500 },
+            { "id": 3, "name": "Air", "price": 3000 },
+            { "id": 4, "name": "Soda", "price": 5000 },
+            { "id": 5, "name": "Jus Buah", "price": 5000 }
+        ]
+    }
+}
