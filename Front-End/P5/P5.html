@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program Penjualan Motor</title>
+    <link rel="stylesheet" href="P5.css">
+</head>
+<body>
+    <header>
+        <h1>PROGRAM PENJUALAN MOTOR</h1>
+    </header>
+    <main>
+        <section id="price-list">
+            <h2>Daftar Harga</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Harga</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Honda</td>
+                        <td>Rp 20.000.000</td>
+                    </tr>
+                    <tr>
+                        <td>Yamaha</td>
+                        <td>Rp 18.000.000</td>
+                    </tr>
+                    <tr>
+                        <td>Suzuki</td>
+                        <td>Rp 15.000.000</td>
+                    </tr>
+                    <tr>
+                        <td>Helm</td>
+                        <td>Rp 500.000</td>
+                    </tr>
+                    <tr>
+                        <td>Jaket</td>
+                        <td>Rp 300.000</td>
+                    </tr>
+                    <tr>
+                        <td>Velg</td>
+                        <td>Rp 1.000.000</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <form id="form-penjualan">
+            <section id="block-a">
+                <label for="motor">Pilih Motor</label>
+                <div id="internal">
+                    <select name="motor" id="motor">
+                        <option value="">--Pilih Motor--</option>
+                        <option value="Honda">Honda</option>
+                        <option value="Yamaha">Yamaha</option>
+                        <option value="Suzuki">Suzuki</option>
+                    </select>
+                </div>
+            </section>
+            <section id="block-b">
+                <p>Pilih Aksesoris</p>
+                <input type="checkbox" id="eq1" name="aksesoris" value="Helm">
+                <label for="eq1">Helm</label><br>
+                <input type="checkbox" id="eq2" name="aksesoris" value="Jaket">
+                <label for="eq2">Jaket</label><br>
+                <input type="checkbox" id="eq3" name="aksesoris" value="Velg">
+                <label for="eq3">Velg</label><br>
+            </section>
+            <section id="block-c">
+                <p>Metode Pembayaran</p>
+                <input type="radio" id="tunai" name="pembayaran" value="tunai">
+                <label for="tunai">Tunai</label><br>
+                <input type="radio" id="kredit" name="pembayaran" value="kredit">
+                <label for="kredit">Kredit</label><br>
+            </section>
+            <section id="block-d">
+                <label for="harga">Harga</label>
+                <input type="text" id="harga" readonly><br>
+                <label for="bunga_diskon">Bunga / Diskon</label>
+                <input type="text" id="bunga_diskon" readonly><br>
+                <label for="total">Total</label>
+                <input type="text" id="total" readonly><br>
+            </section>
+        </form>
+    </main>
+    <footer>
+        <button type="button" id="btn-submit">Proses</button>
+        <button type="reset" id="btn-reset" form="form-penjualan">Reset</button>
+    </footer>
+    <script src="P5.js"></script>
+</body>
+</html>

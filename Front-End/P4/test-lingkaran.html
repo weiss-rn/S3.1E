@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Lingkaran</title>
+</head>
+<body>
+    <script type="module">
+        import { luasLingkaran, kelilingLingkaran } from "./lingkaran.js";
+
+        const radiusStr = prompt("Masukkan panjang radius lingkaran");
+        const radius = Number(radiusStr);
+        if (Number.isNaN(radius)) {
+            alert('Input bukan angka yang valid.');
+        } else {
+            const luas = luasLingkaran(radius);
+            const keliling = kelilingLingkaran(radius);
+            alert(`luas : ${luas} | Keliling : ${keliling}`);
+        }
+    </script>
+</body>
+</html>

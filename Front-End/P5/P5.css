@@ -1,0 +1,60 @@
+body {
+    background-color: white;
+    color: black;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+h1 {
+    text-align: center;
+}
+
+#internal {
+    display: inline-block;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#block-a, #block-b, #block-c, #block-d {
+    text-align: center;
+    margin: 20px 0;
+}
+
+option {
+    text-align: center;
+    border: 1px solid black;
+}
+
+footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+button {
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#price-list {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+table {
+    margin: 0 auto;
+    border-collapse: collapse;
+    width: 50%;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}

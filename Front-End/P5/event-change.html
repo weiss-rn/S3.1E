@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div id="buah"></div>
+<label for="buah">Pilih Buah</label>
+    <select name="buah" id="buah">    
+        <button>Apel</button>
+        <button>Mangga</button>
+        <button>Jeruk</button>
+    </select>
+    <script>
+        const buah = document.getElementById('buah');
+        const info = document.getElementById('info');
+        buah.addEventListener('change', function(event) {
+           info.innerText = 'Anda telah memilih: ${e.target.value}';
+        });
+    </script>
+</body>
+</html>
