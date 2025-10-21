@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas Studi kasus</title>
+    <link href="style.css" rel="stylesheet"> <!-- fixed typo -->
+</head>
+<body>
+    <h1>Perhitungan Biaya Kirim Paket</h1>
+    <section>
+        <div id="form_block">
+            <form>
+                <label for="no-resi">Nomor Resi</label>
+                <input type="text" id="no-resi" name="resi">
+
+                <label for="berat-barang">Berat barang</label>
+                <input type="text" id="berat-barang" name="weight">
+
+                <label for="kota-asal">Kota Asal</label>
+                <select name="origin" id="kota-asal">
+                    <option value="">Pilih Kota</option>
+                </select>
+
+                <label for="kota-tujuan">Kota Tujuan</label>
+                <select name="destination" id="kota-tujuan">
+                    <option value="">Pilih Kota</option>
+                </select>
+
+                <button type="submit">Hitung</button>
+                <input type="text" id="total" name="total" readonly>
+            </form>
+        </div>
+    </section>
+    <div id="inject-tabel"></div>
+    <!-- Updated script references -->
+    <script src="Hitung.js"></script>
+    <script src="modular_table.js"></script>
+    <script src="xml_grabber_script.js"></script>
+</body>
+</html>

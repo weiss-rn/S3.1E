@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Pilih Bahasa pemerograman favorit anda</h1>
+    <label for="Bahasa">Pilih Bahasa</label>
+    <select name="Bahasa" id="Bahasa">
+        <option value="Javascript">Javascript</option>
+        <option value="PHP">PHP</option>
+        <option value="Java">Java</option>
+        <option value="C_sharp">C#</option>
+        <option value="Python">Python</option>
+    </select>
+    <button type="button" onclick="alert('Bahasa pilihan anda adalah ' + document.getElementById('Bahasa').value);">Pilih</button>
+<script>
+    function tampilkanPilihan() {
+        const hasilElement = document.getElementById('hasil');
+        const bahasaPilihan = document.getElementById('Bahasa').value;
+        hasilElement.textContent = 'Bahasa pilihan anda adalah: ' + bahasaPilihan;
+
+        if(pilihNilai) {
+            const nilaiPilihan = document.getElementById('Nilai').value;
+            hasilElement.textContent += 'Nilai pilihan anda adalah: ' + nilaiPilihan;
+        } else {
+            hasilElement.textContent += 'Nilai pilihan anda belum dipilih.';
+            hasilElement.style.color = 'red';
+        }
+    }
+</script>
+</body>
+</html>
