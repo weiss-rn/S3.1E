@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikasi Penjualan Komputer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Aplikasi Penjualan Komputer</h1>
+        <form id="form-penjualan">
+            <div class="form-group">
+                <label for="kategori">Kategori:</label>
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="text" id="kategori" readonly placeholder="Pilih kategori">
+                    </div>
+                    <div class="form-group">
+                        <button type="button" id="btn-kategori" class="btn">Pilih Kategori</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="nama-barang">Nama Barang:</label>
+                <input type="text" id="nama-barang" readonly placeholder="Pilih barang">
+            </div>
+            
+            <div class="form-group">
+                <label for="harga-satuan">Harga Satuan:</label>
+                <input type="text" id="harga-satuan" readonly placeholder="Rp 0">
+            </div>
+            
+            <div class="form-group">
+                <label for="jumlah">Jumlah:</label>
+                <input type="number" id="jumlah" min="1" value="1">
+            </div>
+            
+            <div class="form-group">
+                <label for="jenis-penjualan">Jenis Penjualan:</label>
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="text" id="jenis-penjualan" readonly placeholder="Pilih jenis penjualan">
+                    </div>
+                    <div class="form-group">
+                        <button type="button" id="btn-jenis-penjualan" class="btn">Pilih Jenis</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="total-section">
+                <p><span class="total-label">Total Penjualan:</span> <span class="total-value" id="total-penjualan">Rp 0</span></p>
+                <p><span class="total-label">Diskon:</span> <span class="total-value" id="diskon">Rp 0</span></p>
+                <p><span class="total-label">Pajak:</span> <span class="total-value" id="pajak">Rp 0</span></p>
+                <p><span class="total-label">Harga Total:</span> <span class="total-value" id="harga-total">Rp 0</span></p>
+            </div>
+        </form>
+    </div>
+
+    <!-- Modal Kategori -->
+    <div id="modal-kategori" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Pilih Kategori</h2>
+                <span class="close" id="close-kategori">&times;</span>
+            </div>
+            <button class="kategori-option" data-kategori="PC/LAPTOP">PC/LAPTOP</button>
+            <button class="kategori-option" data-kategori="AKSESORIS">AKSESORIS</button>
+            <button class="kategori-option" data-kategori="PERIPHARAL">PERIPHERAL</button>
+            <div class="modal-actions">
+                <button class="btn btn-secondary batal" id="btn-batal">Batalkan</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Barang -->
+    <div id="modal-barang" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Pilih Barang</h2>
+                <span class="close" id="close-barang">&times;</span>
+            </div>
+            <div id="barang-list"></div>
+        </div>
+    </div>
+
+    <!-- Modal Jenis Penjualan -->
+    <div id="modal-jenis-penjualan" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Pilih Jenis Penjualan</h2>
+                <span class="close" id="close-jenis-penjualan">&times;</span>
+            </div>
+            <button class="jenis-penjualan-option" data-jenis="Tunai">Tunai</button>
+            <button class="jenis-penjualan-option" data-jenis="Kredit">Kredit</button>
+            <div class="modal-actions">
+                <button class="btn btn-secondary batal" id="btn-batal">Batalkan</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
