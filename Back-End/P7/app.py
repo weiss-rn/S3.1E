@@ -9,7 +9,7 @@ app.secret_key = os.urandom(24)
 
 
 # Cofig MySQL Agar terhubung dengan Database
-app.config['MYSQL_HOST'] = 'github-runner-3.tail88b018.ts.net'
+app.config['MYSQL_HOST'] = '100.117.130.109'
 app.config['MYSQL_USER'] = 'testuser'
 app.config['MYSQL_PASSWORD'] = 'testpass'
 app.config['MYSQL_DB'] = 'testdb'
@@ -44,9 +44,9 @@ def index():
         count_query = "SELECT COUNT(*) FROM stok"
         count_params = []
         if search_query:
-            count_query += " WHERE kode LIKE %s OR nama LIKE %s OR harga LIKE %s"
+            count_query += " WHERE kode_sparepart LIKE %s OR nama_sparepart LIKE %s OR harga LIKE %s OR tipe_motor LIKE %s OR stok LIKE %s"
             search_term = '%' + search_query + '%'
-            count_params = [search_term, search_term, search_term]
+            count_params = [search_term, search_term, search_term, search_term, search_term]
         
         cur.execute(count_query, count_params)
         total_rows = cur.fetchone()[0]
@@ -56,8 +56,8 @@ def index():
         data_query = "SELECT * FROM stok"
         data_params = []
         if search_query:
-            data_query += " WHERE kode LIKE %s OR nama LIKE %s OR harga LIKE %s"
-            data_params = [search_term, search_term, search_term]
+            data_query += " WHERE kode_sparepart LIKE %s OR nama_sparepart LIKE %s OR harga LIKE %s OR tipe_motor LIKE %s OR stok LIKE %s"
+            data_params = [search_term, search_term, search_term, search_term, search_term]
         
         data_query += " LIMIT %s OFFSET %s"
         data_params.extend([per_page, offset])
