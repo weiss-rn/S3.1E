@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}Edit Spare Part | MotoParts Garage{% endblock %}
+
+{% block content %}
+<section class="form-card">
+    <h1>Edit Spare Part</h1>
+    <p class="form-subtitle">Perbarui detail stok agar katalog tetap akurat.</p>
+    <form class="crud-form" method="post" enctype="multipart/form-data">
+        <label>
+            <span>Kode Sparepart*</span>
+            <input type="text" name="kode_sparepart" value="{{ data.kode_sparepart }}" required>
+        </label>
+        <label>
+            <span>Nama Sparepart*</span>
+            <input type="text" name="nama_sparepart" value="{{ data.nama_sparepart }}" required>
+        </label>
+        <div class="form-row">
+            <label>
+                <span>Harga (Rp)*</span>
+                <input type="number" name="harga" min="0" step="100" value="{{ data.harga }}" required>
+            </label>
+            <label>
+                <span>Stok*</span>
+                <input type="number" name="stok" min="0" step="1" value="{{ data.stok }}" required>
+            </label>
+        </div>
+        <label>
+            <span>Tipe Motor</span>
+            <input type="text" name="tipe_motor" value="{{ data.tipe_motor }}">
+        </label>
+        <label class="file-label">
+            <span>Foto Produk (opsional, unggah untuk mengganti)</span>
+            <input type="file" name="image" accept=".png,.jpg,.jpeg,.gif">
+        </label>
+        {% if data.image %}
+            <div class="image-preview">
+                <span>Gambar sekarang:</span>
+                <img src="{{ url_for('uploaded_file', filename=data.image) }}" alt="{{ data.nama_sparepart }}">
+            </div>
+        {% endif %}
+
+        <div class="form-actions">
+            <a class="btn-ghost" href="{{ url_for('index') }}"><i class="fa-solid fa-arrow-left"></i> Kembali</a>
+            <button type="submit" class="btn-primary"><i class="fa-solid fa-floppy-disk"></i> Simpan</button>
+        </div>
+    </form>
+</section>
+{% endblock %}

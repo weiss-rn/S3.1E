@@ -6,7 +6,7 @@ from bson.objectid import ObjectId
 from werkzeug.utils import secure_filename
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-TEMPLATE_DIR = os.path.join(BASE_DIR, '../P7/templates')
+TEMPLATE_DIR = os.path.join(BASE_DIR, '../P10/templates')
 
 app = Flask(__name__, template_folder=TEMPLATE_DIR)
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'dev-secret-key')

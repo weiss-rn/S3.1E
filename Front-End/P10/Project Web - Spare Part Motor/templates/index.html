@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% block title %}Daftar Spare Part | MotoParts Garage{% endblock %}
+
+{% block content %}
+    <section class="category-bar">
+        <div class="category-bar-div">
+            <i class="fa-solid fa-motorcycle"></i>
+            <span>Part Matic &amp; Sport</span>
+        </div>
+        <div class="category-bar-div">
+            <i class="fa-solid fa-oil-can"></i>
+            <span>Oli &amp; Pelumas</span>
+        </div>
+        <div class="category-bar-div">
+            <i class="fa-solid fa-gauge-high"></i>
+            <span>Rem &amp; Suspensi</span>
+        </div>
+        <div class="category-bar-div">
+            <i class="fa-solid fa-bolt"></i>
+            <span>Kelistrikan</span>
+        </div>
+        <div class="category-bar-div">
+            <i class="fa-solid fa-gears"></i>
+            <span>Gearset &amp; Rantai</span>
+        </div>
+        <div class="category-bar-div">
+            <i class="fa-solid fa-helmet-safety"></i>
+            <span>Apparel Riding</span>
+        </div>
+    </section>
+
+    <section class="filter-box">
+        <section class="filter-box-section">
+            <div class="filter-title">Filter Harga Spare Part</div>
+            <div id="priceSlider" data-min="{{ min_price|int }}" data-max="{{ max_price|int }}"></div>
+            <div class="price-range">Rp
+                <span id="priceLabelMin">{{ "{:,.0f}".format(min_price).replace(",", ".") if min_price else "0" }}</span> - Rp
+                <span id="priceLabelMax">{{ "{:,.0f}".format(max_price).replace(",", ".") if max_price else "0" }}</span>
+            </div>
+            <p>Pilih rentang harga untuk menampilkan part sesuai budget bengkel kamu.</p>
+        </section>
+    </section>
+    
+    <section class="product-grid" id="productGrid" data-min-price="{{ min_price|int }}" data-max-price="{{ max_price|int }}">
+        {% if data %}
+            {% for item in data %}
+                <div class="product-card" data-price="{{ item.harga|float }}">
+                    <img src="{{ url_for('uploaded_file', filename=item.image) if item.image else 'https://placehold.co/400x320?text=Spare+Part' }}" alt="{{ item.nama_sparepart }}">
+                    <div class="product-info">
+                        <span class="product-name">{{ item.nama_sparepart }}</span>
+                        <span class="product-meta">Kode {{ item.kode_sparepart }} • {{ item.tipe_motor or 'Semua motor' }}</span>
+                        <span class="product-price">Rp {{ "{:,.0f}".format(item.harga).replace(",", ".") }}</span>
+                        <span class="product-sold">Stok tersedia: {{ item.stok }}</span>
+                    </div>
+                    <button class="add-to-cart" data-name="{{ item.nama_sparepart }}" data-price="{{ item.harga|float }}">Tambah ke Keranjang</button>
+                    <div class="product-manage">
+                        <a class="btn-ghost" href="{{ url_for('edit', item_id=item.id) }}"><i class="fa-solid fa-pen"></i> Edit</a>
+                        <form method="post" action="{{ url_for('delete', item_id=item.id) }}" onsubmit="return confirm('Hapus spare part ini?');">
+                            <button type="submit" class="btn-danger"><i class="fa-solid fa-trash"></i> Hapus</button>
+                        </form>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="empty-state">Belum ada stok. Tambahkan spare part terlebih dahulu.</div>
+        {% endif %}
+    </section>
+
+    {% if total_pages > 1 %}
+        <div class="pagination">
+            {% if page > 1 %}
+                <a href="{{ url_for('index', page=page-1, search=search) }}" class="page-link">&laquo; Sebelumnya</a>
+            {% endif %}
+            <span class="page-indicator">Halaman {{ page }} dari {{ total_pages }}</span>
+            {% if page < total_pages %}
+                <a href="{{ url_for('index', page=page+1, search=search) }}" class="page-link">Berikutnya &raquo;</a>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    <div id="cartDialog" title="Keranjang Belanja">
+        <div id="cartItems"></div>
+        <div class="total-price">Total: Rp <span id="cartTotal">0</span></div>
+    </div>
+{% endblock %}

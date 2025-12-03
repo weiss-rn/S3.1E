@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}MotoParts Garage{% endblock %}</title>
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/style.css') }}">
+    {% block head_extra %}{% endblock %}
+</head>
+<body>
+    <header>
+        <a href="{{ url_for('index') }}" class="logo">Moto<span>Parts</span></a>
+        <form class="search-box" action="{{ url_for('index') }}" method="get">
+            <input type="text" name="search" placeholder="Cari oli, kampas rem, ban tubeless..." value="{{ search|default('') }}">
+            <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+        <div class="header-icons">
+            <a class="icon-box" href="{{ url_for('add') }}" title="Tambah Sparepart"><i class="fa-solid fa-plus"></i></a>
+            <div class="icon-box"><i class="fa-solid fa-helmet-safety"></i></div>
+        </div>
+    </header>
+
+    {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %}
+            <div class="flash-container">
+                {% for category, message in messages %}
+                    <div class="flash flash-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <script src="{{ url_for('static', filename='JS/script.js') }}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

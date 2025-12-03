@@ -1,0 +1,19 @@
+//Mongo
+// MONGO_DB = "testdb"
+// MONGO_COLLECTION = "mycollection"
+
+use testdb;
+db.createCollection("mycollection");
+
+// kode = request.form['kode']
+// nama = request.form['nama']
+// harga = parse_numeric(request.form.get('harga'), "Harga", float)
+// jumlah = parse_numeric(request.form.get('jumlah'), "Jumlah", int)
+
+
+db.stok.insertMany([
+    { "kode": "A001", "nama": "Makanan Kucing", "harga": 50000, "jumlah": 10 },
+    { "kode": "A002", "nama": "Makanan Anjing", "harga": 60000, "jumlah": 5 },
+    { "kode": "A003", "nama": "Makanan Hamster", "harga": 40000, "jumlah": 8 },
+    { "kode": "A004", "nama": "Makanan Tikus", "harga": 70000, "jumlah": 3}
+]);
