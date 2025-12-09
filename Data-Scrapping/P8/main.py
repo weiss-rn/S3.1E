@@ -21,7 +21,7 @@ def get_total_pages():
     with open('temp/rest.html', 'w+', encoding='utf-8') as outfile:
         outfile.write(res.text)
         outfile.close()
-
+ 
     soup = BeautifulSoup(res.text, 'html.parser')
     print(soup.prettify())
 

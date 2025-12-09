@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{ product.name }} - Stikom Mart</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/dark.css') }}">
+    <style>
+        body {
+            background: #f5f7fb;
+            font-family: "Inter", system-ui, -apple-system, sans-serif;
+        }
+
+        /* Sticky Button Bar */
+        .bottom-action {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #ffffff;
+            padding: 10px;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 999;
+        }
+
+        /* Product Image */
+        .product-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        /* Info Card */
+        .info-card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 15px;
+            position: relative;
+            border: 1px solid #e5e7eb;
+        }
+
+        /* Dark Mode elements */
+        body.dark-mode .info-card,
+        body.dark-mode .bottom-action {
+            background-color: #1e1e1e;
+            border-color: #333 !important;
+        }
+    </style>
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-dark bg-dark shadow-sm py-2">
+    <div class="container d-flex justify-content-between">
+        <a class="navbar-brand fw-bold fs-5" href="/">Stikom Mart</a>
+        <button id="darkModeToggle" class="btn btn-outline-light btn-sm">Dark Mode</button>
+    </div>
+</nav>
+
+<!-- Gambar Produk -->
+<div>
+    <img src="{{ url_for('static', filename='img/' ~ product.image) if product.image else 'https://via.placeholder.com/640x360?text=Produk' }}" class="product-img" alt="Produk">
+</div>
+
+<div class="container pb-5 mb-5">
+    <!-- Card Informasi Produk -->
+    <div class="info-card shadow-sm">
+        <h5 class="fw-bold">{{ product.name }}</h5>
+        <p class="text-primary fw-bold mt-1 mb-3">Rp {{ "%.0f"|format(product.price) }}</p>
+        <span class="badge bg-light text-dark border">Tersedia</span>
+    </div>
+
+    <div class="mt-4">
+        <h6 class="fw-bold">Deskripsi Produk</h6>
+        <p class="text-muted small">{{ product.description }}</p>
+        <div class="mt-3">
+            <div class="d-flex align-items-center gap-2 text-muted small mb-2">
+                <i class="fas fa-shield-alt text-success"></i> Garansi 7 hari jika cacat produk
+            </div>
+            <div class="d-flex align-items-center gap-2 text-muted small">
+                <i class="fas fa-truck text-primary"></i> Pengiriman cepat ke seluruh Indonesia
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bottom-action">
+    <div>
+        <div class="text-muted small">Total</div>
+        <div class="fw-bold">Rp {{ "%.0f"|format(product.price) }}</div>
+    </div>
+    <div class="d-flex gap-2">
+        <a href="javascript:history.back()" class="btn btn-outline-secondary">Kembali</a>
+        <a href="/add_to_cart/{{ product.id }}" class="btn btn-primary">Tambah ke Keranjang</a>
+    </div>
+</div>
+<!-- Dark Mode Script -->
+<script>
+    const body = document.body;
+    const toggle = document.getElementById("darkModeToggle");
+
+    if (localStorage.getItem("darkMode") === "enabled") {
+        enableDarkMode();
+    }
+
+    toggle.addEventListener("click", () => {
+        if (body.classList.contains("dark-mode")) {
+            disableDarkMode();
+        } else {
+            enableDarkMode();
+        }
+    });
+
+    function enableDarkMode() {
+        body.classList.add("dark-mode");
+        document.querySelectorAll(".navbar, .info-card, .bottom-action")
+            .forEach(el => el.classList.add("dark-mode"));
+        localStorage.setItem("darkMode", "enabled");
+        toggle.innerHTML = "Dark";
+    }
+
+    function disableDarkMode() {
+        body.classList.remove("dark-mode");
+        document.querySelectorAll(".navbar, .info-card, .bottom-action")
+            .forEach(el => el.classList.remove("dark-mode"));
+        localStorage.setItem("darkMode", "disabled");
+        toggle.innerHTML = "Light";
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

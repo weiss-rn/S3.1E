@@ -1,0 +1,23 @@
+body.dark-mode {
+    background-color: #121212;
+    color: #f8f9fa;
+}
+
+.dark-mode.navbar,
+.dark-mode.card,
+.dark-mode.product-card,
+.dark-mode.cat-icon,
+.dark-mode.info-card,
+.dark-mode.bottom-action,
+.dark-mode.cart-card,
+.dark-mode.summary,
+.dark-mode.card-soft,
+.dark-mode.bottom-nav {
+    background-color: #1e1e1e !important;
+    color: #f8f9fa !important;
+    border-color: #333 !important;
+}
+
+.dark-mode a {
+    color: #f8f9fa;
+}
