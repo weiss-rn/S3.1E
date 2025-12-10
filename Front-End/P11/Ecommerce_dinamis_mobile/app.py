@@ -6,7 +6,7 @@ app = Flask(__name__, template_folder="static/templates", static_folder="static"
 app.secret_key = os.urandom(24)
 
 db = mysql.connector.connect(
-    host="100.92.101.16",
+    host="emma-temp-db-over-epycvps-2.tail88b018.ts.net",
     user="testuser",
     password="testpass",
     database="testdb"

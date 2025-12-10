@@ -1,59 +1,22 @@
-# Back-End Directory
+# Back-End Coursework
 
-This directory contains various subdirectories that group the back-end components or projects of this repository. Following Folder of current directory is used for user submission.
-Following Submission for the following Lecture Class "Dasar Pemrograman Backend" - 3rd Semester, Below is a breakdown of each subdirectory:
+Python/Flask backend exercises for the 3rd-semester "Dasar Pemrograman Backend" course. Folders are grouped by meeting (`P2`-`P10`) plus `UTS`.
 
-## Pertemuan 2 - Pengenalan bahasa pemrograman Python - I
-This folder contains the files and resources for the second project or component in the back-end series. It focuses on implementing foundational Python programming concepts.
-What's Included:
-- Basic Syntax
-- Arithmetic Operations (Penambahan.py, Pengurangan.py, Perkalian.py, Pembagian.py)
-- Modular Programming (hasil_modul.py)
+Contents by meeting
+- `P2`-`P3`: Core Python (syntax, arithmetic helpers, simple modules, JSON/file handling).
+- `P4`: Intro to Flask (routing, templates, form handling, login/dashboard demos).
+- `P5`-`P6`: Flask with forms, static assets, and basic CRUD against in-memory/data sources.
+- `P7`: Advanced Flask patterns (template features, file upload handling).
+- `P9`-`P10`: Extended Flask/database work and final practice apps.
+- `UTS`: Midterm submission.
 
-##
+How to run a Flask exercise
+1) `cd` into the chosen `P#` folder.
+2) (Optional) create a venv: `python -m venv .venv && .\.venv\Scripts\activate` (Windows) or `python3 -m venv .venv && source .venv/bin/activate` (Unix).
+3) Install dependencies if needed (common: `pip install flask mysql-connector-python`).
+4) Run the app, typically `python app.py` (some folders have multiple entry points like `routing_app.py`).
+5) Open the printed localhost URL in your browser.
 
-## Pertemuan 3 - Pengenalan bahasa pemrograman Python - II
-This folder includes the third project in the sequence. It builds upon the previous components and introduces data handling and file operations.
-Continuation of Previous lecture with new added:
-- JSON Data Handling
-- Python Scripts for Data Processing
-
-##
-
-## Pertemuan 4 - Introduction to Web Framework (Flask) - I
-The fourth project or component is housed in this directory. It introduces basic web development with Flask framework.
-Continuation of Previous lecture with new added:
-- Flask Application Setup
-- Basic Routing
-- HTML Templates Integration
-
-##
-
-## Pertemuan 5 - Introduction to Web Framework (Flask) - II
-This folder contains back-end resources for the fifth project, focusing on form handling and template rendering.
-Continuation of Previous lecture with new added:
-- Form Processing
-- Template Rendering
-- Enhanced Routing
-
-##
-
-## Pertemuan 6 - Database Integration with Flask
-The sixth project represents database integration with Flask applications.
-Continuation of Previous lecture with new added:
-- Static File Handling
-- Database Operations
-- CRUD Functionality
-
-##
-
-## Pertemuan 7 - Advanced Flask Applications
-This final folder represents the culmination of the back-end development efforts. It includes advanced features and prepares applications for deployment.
-Continuation of Previous lecture with new added:
-- Advanced Template Features
-- File Upload Handling
-- Complete Web Application Structure
-
----
-
-Each folder is designed to be modular and focuses on a specific aspect or phase of the back-end development lifecycle.
+Tips
+- Check inline comments for required environment variables or credentials.
+- For DB-backed examples, confirm the connection string/host and run any seed SQL provided in the folder before testing.
