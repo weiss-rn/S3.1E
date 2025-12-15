@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Home</title>
+    <style>
+      :root {
+        --bg: #252423;
+        --accent: #ff4b4b;
+        --text: #f7f7f7;
+        --muted: rgba(247, 247, 247, 0.72);
+        --card: rgba(255, 255, 255, 0.06);
+        --border: rgba(255, 255, 255, 0.12);
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        color: var(--text);
+        background: radial-gradient(900px 400px at 20% 0%, rgba(255, 75, 75, 0.20), transparent 60%),
+                    radial-gradient(800px 400px at 100% 100%, rgba(255, 75, 75, 0.14), transparent 55%),
+                    var(--bg);
+      }
+      header {
+        padding: 18px 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        border-bottom: 1px solid var(--border);
+        background: rgba(0, 0, 0, 0.12);
+      }
+      .brand { font-weight: 800; letter-spacing: 0.2px; }
+      .brand span { color: var(--accent); }
+      .nav { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+      a.btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 10px 12px;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        color: var(--text);
+        text-decoration: none;
+        background: rgba(255, 255, 255, 0.04);
+      }
+      a.btn.primary { border-color: rgba(255, 75, 75, 0.45); background: rgba(255, 75, 75, 0.10); }
+      main { padding: 22px 16px; display: grid; place-items: start center; }
+      .card {
+        width: min(720px, 100%);
+        padding: 20px;
+        border-radius: 16px;
+        background: var(--card);
+        border: 1px solid var(--border);
+      }
+      h1 { margin: 0 0 6px; font-size: 22px; }
+      p { margin: 0; color: var(--muted); }
+      .welcome { margin-top: 14px; padding: 12px 14px; border-radius: 14px; border: 1px dashed rgba(255, 75, 75, 0.45); }
+      .welcome strong { color: rgba(255, 180, 180, 0.95); }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="brand">MP6 <span>Mini</span> Site</div>
+      <nav class="nav">
+        <a class="btn primary" href="/admin">Admin Panel</a>
+        <a class="btn" href="/logout">Logout</a>
+      </nav>
+    </header>
+    <main>
+      <section class="card">
+        <h1>Home</h1>
+        <p>This page is served by Python and rendered with a tiny template engine.</p>
+        <div class="welcome">
+          Welcome, <strong>{% emit(user_name) %}</strong>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
