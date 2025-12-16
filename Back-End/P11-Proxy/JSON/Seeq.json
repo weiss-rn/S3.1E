@@ -1,0 +1,9 @@
+[
+  { "kode": "BRG001", "nama": "Kopi Bubuk 250g", "harga": 45000.0, "gambar": null, "jumlah": 25 },
+  { "kode": "BRG002", "nama": "Keripik Pisang", "harga": 15000.0, "gambar": "Screenshot_2025-12-10_111853.png", "jumlah": 40 },
+  { "kode": "BRG003", "nama": "Sambal Botol 200ml", "harga": 28000.0, "gambar": null, "jumlah": 12 },
+  { "kode": "BRG004", "nama": "Teh Herbal", "harga": 35000.0, "gambar": null, "jumlah": 18 },
+  { "kode": "BRG005", "nama": "Sabun Handmade", "harga": 22000.0, "gambar": null, "jumlah": 30 },
+  { "kode": "BRG006", "nama": "Madu 500ml", "harga": 85000.0, "gambar": null, "jumlah": 7 }
+]
+
