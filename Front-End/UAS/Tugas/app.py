@@ -79,9 +79,25 @@ def _fetch_products_page(search_query, category_slug, page, per_page):
         params.append(category_slug)
 
     if search_query:
-        clauses.append("(name LIKE %s OR description LIKE %s)")
         like = f"%{search_query}%"
-        params.extend([like, like])
+
+        category_match = None
+        normalized = search_query.strip().lower()
+        if normalized:
+            if normalized in CATEGORY_BY_SLUG:
+                category_match = normalized
+            else:
+                for slug, label in CATEGORY_LABELS.items():
+                    if normalized == label.lower():
+                        category_match = slug
+                        break
+
+        if category_match and category_match != "semua":
+            clauses.append("(name LIKE %s OR category = %s)")
+            params.extend([like, category_match])
+        else:
+            clauses.append("name LIKE %s")
+            params.append(like)
 
     where_sql = (" WHERE " + " AND ".join(clauses)) if clauses else ""
 
