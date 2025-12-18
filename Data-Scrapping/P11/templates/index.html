@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Status</title>
+    <style>
+        body{
+            background: white;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section class="card">
+            {% if username %}
+                <h1>Login berhasil, {{ username }}!</h1>
+            {% elif error %}
+                <h1>{{ error }}</h1>
+            {% else %}
+                <h1>Silakan masuk</h1>
+            {% endif %}
+
+            <form action="/login" method="get">
+                <label>
+                    Username
+                    <input name="user" type="text" placeholder="test" required>
+                </label>
+                <label>
+                    Password
+                    <input name="pass" type="password" placeholder="123" required>
+                </label>
+                <button type="submit">Login</button>
+            </form>
+
+            <!-- <p class="hint">You can also browse <code>/login/&lt;username&gt;/&lt;password&gt;</code>.</p> -->
+        </section>
+    </main>
+</body>
+</html>
