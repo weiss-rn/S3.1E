@@ -1,0 +1,27 @@
+//Mongo
+// MONGO_DB = "testdb"
+// MONGO_COLLECTION = "mycollection"
+
+use testdb;
+db.createCollection("mycollection");
+
+// kode = request.form['kode']
+// nama = request.form['nama']
+// harga = parse_numeric(request.form.get('harga'), "Harga", float)
+// jumlah = parse_numeric(request.form.get('jumlah'), "Jumlah", int)
+
+
+db.stok.insertMany([
+    { "kode": "SP001", "nama": "Oli Mesin SAE 40", "harga": 85000, "stok": 20, "tipe_motor": "Matic", "description": "Oli mesin untuk perawatan harian, membantu menjaga performa dan suhu mesin tetap stabil.", "image": "AIME25_Screenshot_2025-12-03_105327.png" },
+    { "kode": "SP002", "nama": "Filter Oli", "harga": 45000, "stok": 15, "tipe_motor": "Matic", "description": "Filter oli kompatibel untuk berbagai tipe motor (cek kecocokan sebelum pemasangan).", "image": "AIME25_Screenshot_2025-12-03_105327.png" },
+    { "kode": "SP003", "nama": "Kampas Rem Depan", "harga": 120000, "stok": 12, "tipe_motor": "Sport", "description": "Kampas rem depan material komposit, pengereman lebih pakem dan minim bunyi.", "image": "AIME25_Screenshot_2025-12-03_105327.png" },
+    { "kode": "SP004", "nama": "Kampas Rem Belakang", "harga": 95000, "stok": 10, "tipe_motor": "Matic", "description": "Kampas rem belakang tahan panas untuk pemakaian harian dan touring.", "image": "AIME25_Screenshot_2025-12-03_105327.png" },
+    { "kode": "SP005", "nama": "Busi NGK", "harga": 65000, "stok": 25, "tipe_motor": "All", "description": "Busi untuk pengapian stabil, akselerasi lebih responsif, dan umur pakai lebih panjang.", "image": "AIME25_Screenshot_2025-12-03_105327.png" },
+    { "kode": "SP006", "nama": "Rantai Motor 420", "harga": 180000, "stok": 8, "tipe_motor": "Sport", "description": "Rantai motor ukuran 420 untuk akselerasi halus; cocok untuk servis berkala.", "image": "AIME25_Screenshot_2025-12-03_105327.png" },
+    { "kode": "SP007", "nama": "Sprocket Depan 14T", "harga": 150000, "stok": 6, "tipe_motor": "Sport", "description": "Sprocket depan 14T untuk penggantian/upgrade rasio; pastikan kompatibel dengan motor Anda.", "image": "AIME25_Screenshot_2025-12-03_105327.png" },
+    { "kode": "SP008", "nama": "Ban Depan 90/90-12", "harga": 350000, "stok": 5, "tipe_motor": "Matic", "description": "Ban depan tubeless, grip bagus di kondisi kering/basah untuk skutik harian.", "image": "AIME25_Screenshot_2025-12-03_105327.png" },
+    { "kode": "SP009", "nama": "Ban Belakang 100/90-12", "harga": 380000, "stok": 4, "tipe_motor": "Matic", "description": "Ban belakang tubeless dengan daya cengkeram stabil; cocok untuk penggunaan harian.", "image": "AIME25_Screenshot_2025-12-03_105327.png" },
+    { "kode": "SP010", "nama": "Aki 12V 7Ah", "harga": 450000, "stok": 7, "tipe_motor": "All", "description": "Aki 12V 7Ah siap pakai, daya starter stabil dan cocok untuk berbagai tipe motor.", "image": "AIME25_Screenshot_2025-12-03_105327.png" },
+    { "kode": "SP011", "nama": "Kopling Clutch Cable", "harga": 75000, "stok": 14, "tipe_motor": "Sport", "description": "Kabel kopling pengganti, tarikan lebih ringan dan responsif untuk pemakaian harian.", "image": "AIME25_Screenshot_2025-12-03_105327.png" },
+    { "kode": "SP012", "nama": "Knalpot Racing", "harga": 550000, "stok": 3, "tipe_motor": "Sport", "description": "Knalpot racing untuk performa; gunakan sesuai kebutuhan dan aturan yang berlaku.", "image": "AIME25_Screenshot_2025-12-03_105327.png" }
+]);
