@@ -1,22 +1,28 @@
-# P9 Scraper
+# P9 - Selenium Scraper (Kompas Tekno)
 
-This script (`main_v2.py`) scrapes article blocks from https://tekno.kompas.com/ using Selenium and saves collected article HTML blocks into `temp/articles.html`.
+Scraping experiments for https://tekno.kompas.com/ using Selenium and BeautifulSoup.
 
-Usage:
+## Files
 
-1. Install dependencies (e.g., `beautifulsoup4`, `selenium`).
+- `main.py`: saves prettified HTML to `temp/text.txt`, extracts titles to `temp/titles.txt`.
+- `main_alt.py`: basic Selenium scrape for the gadget page and writes a placeholder file to `hasil/kompasparser.txt`.
+- `main_v2.py`: paginated scraper that collects article blocks into `temp/articles.html`.
+- `fungsi.py`: helper methods for directories and file IO.
 
-2. Make sure Chrome and compatible chromedriver are installed and on PATH.
+## Requirements
 
-3. Run the scraper from the repository root:
+- `pip install beautifulsoup4 selenium requests`
+- Chrome and a matching chromedriver on PATH.
+
+## Run
+
+From the repository root:
 
 ```powershell
 python .\Data-Scrapping\P9\main_v2.py
 ```
 
-Output:
-- `temp/articles.html` — contains the prettified HTML for all article blocks scraped, separated by `<!-- PAGE_BREAK_N -->` markers.
+## Output
 
-Notes:
-- The script runs in headless mode and stops automatically after scraping up to 10 pages (configurable via `max_pages`).
-- If you need to tweak selectors, search for the `article_divs` list comprehension in `main_v2.py`.
+- `temp/` and `hasil/` directories are created if missing.
+- `temp/articles.html` contains concatenated article blocks separated by `<!-- PAGE_BREAK_N -->` markers.

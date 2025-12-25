@@ -1,40 +1,40 @@
-# P11-Proxy
+# UAS - Stok UMKM CRUD
 
-Same CRUD UI as `app.py`, but with external databases:
+Inventory management app with image upload and CRUD for `barang`. This folder provides SQLite, MySQL, and MongoDB variants.
 
-- MySQL: `app_mysql.py`
-- MongoDB: `app_mongo.py`
+## Entry points
 
-## Run
+- `app_sqlite.py`: local SQLite database (`stokumkm.db`).
+- `app_mysql.py`: MySQL backend with connection settings from env vars.
+- `app_mongo.py`: MongoDB backend with connection settings from env vars.
 
-1) Install deps (pick what you need):
-   - `pip install flask mysql-connector-python pymongo`
-2) `cd Back-End/P11-Proxy`
-3) Start one of:
-   - SQLite (local): `python app.py`
-   - MySQL (external): `python app_mysql.py`
-   - MongoDB (external): `python app_mongo.py`
+## Run (SQLite)
 
-## Connection settings
+1) `pip install flask`
+2) `cd Back-End\UAS`
+3) `python app_sqlite.py`
 
-### MySQL (`app_mysql.py`)
+## Run (MySQL)
 
-Environment variables (defaults are taken from existing P7 MySQL example):
+1) `pip install flask mysql-connector-python`
+2) Set env vars or edit defaults:
+   - `MYSQL_HOST`, `MYSQL_PORT`, `MYSQL_USER`, `MYSQL_PASSWORD`
+   - `MYSQL_DB`, `MYSQL_TABLE`, `MYSQL_POOL_SIZE`
+3) `python app_mysql.py`
 
-- `MYSQL_HOST` (default `100.117.130.109`)
-- `MYSQL_PORT` (default `3306`)
-- `MYSQL_USER` (default `testuser`)
-- `MYSQL_PASSWORD` (default `testpass`)
-- `MYSQL_DB` (default `testdb`)
-- `MYSQL_TABLE` (default `barang`)
+## Run (MongoDB)
 
-Seed SQL: `JSON/Seeq.sql`
+1) `pip install flask pymongo`
+2) Set env vars:
+   - `MONGO_URI`, `MONGO_DB`, `MONGO_COLLECTION`
+3) `python app_mongo.py`
 
-### MongoDB (`app_mongo.py`)
+## Seed data
 
-- `MONGO_URI` (default `mongodb://100.103.170.96:27017/testdb`)
-- `MONGO_DB` (default `testdb`)
-- `MONGO_COLLECTION` (default `barang`)
+- SQL: `Back-End/UAS/JSON/Seeq.sql`
+- JSON: `Back-End/UAS/JSON/Seeq.json` (import with `mongoimport`)
 
-Seed JSON: `JSON/Seeq.json` (import with `mongoimport --db testdb --collection barang --file JSON/Seeq.json --jsonArray`)
+## Notes
 
+- Uploaded images are stored in `static/uploads`.
+- `requirements.txt` lists the Python packages for this folder.
