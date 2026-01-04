@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Upscale Lab | Admin Panel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container header-inner">
+        <div class="brand">Upscale Lab <span>ONNX</span></div>
+        <nav class="nav">
+          <a class="nav-link" href="index.html">Overview</a>
+          <a class="nav-link" href="upscale.html">Upscale UI</a>
+          <a class="nav-link" href="dashboard.html">Dashboard</a>
+          <a class="nav-link active" href="admin.html">Admin Panel</a>
+          <a class="btn" href="/logout">Logout</a>
+          <a class="btn primary" href="upscale.html">Start Upscaling</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <section class="hero reveal">
+          <div>
+            <h1>Admin Panel</h1>
+            <p>
+              Secure configuration for the Upscale Lab platform. Manage access, ONNX model availability,
+              and worker pools in a dedicated admin environment.
+            </p>
+            <div class="hero-actions">
+              <span class="badge">Admin Role</span>
+              <span class="badge">Policy: Studio</span>
+            </div>
+          </div>
+          <div class="panel">
+            <h3>System Health</h3>
+            <div class="stat-grid">
+              <div class="stat">
+                <span>Uptime</span>
+                <strong>99.98%</strong>
+              </div>
+              <div class="stat">
+                <span>Active Models</span>
+                <strong>4 ONNX</strong>
+              </div>
+              <div class="stat">
+                <span>API Keys</span>
+                <strong>18</strong>
+              </div>
+              <div class="stat">
+                <span>Teams</span>
+                <strong>5</strong>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section reveal" style="--delay: 0.1s">
+          <h2>User Access</h2>
+          <p>Assign roles and manage access privileges across the studio.</p>
+          <div class="panel">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>User</th>
+                  <th>Role</th>
+                  <th>Team</th>
+                  <th>Last Active</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>admin</td>
+                  <td>Owner</td>
+                  <td>Ops</td>
+                  <td>Just now</td>
+                  <td><span class="badge">Verified</span></td>
+                </tr>
+                <tr>
+                  <td>lia.studio</td>
+                  <td>Producer</td>
+                  <td>Creative</td>
+                  <td>12 mins ago</td>
+                  <td><span class="badge">Active</span></td>
+                </tr>
+                <tr>
+                  <td>ron.render</td>
+                  <td>QA Lead</td>
+                  <td>Quality</td>
+                  <td>28 mins ago</td>
+                  <td><span class="badge">Active</span></td>
+                </tr>
+                <tr>
+                  <td>nina.scale</td>
+                  <td>Artist</td>
+                  <td>Illustration</td>
+                  <td>45 mins ago</td>
+                  <td><span class="badge">Limited</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="section reveal" style="--delay: 0.2s">
+          <h2>ONNX Model Governance</h2>
+          <p>Control model availability, presets, and QA rules.</p>
+          <div class="grid">
+            <div class="card">
+              <div class="tag">Policy</div>
+              <h3>Model Access</h3>
+              <p>Real-ESRGAN and Real-SR are available to all teams. Waifu2x is limited to Illustration.</p>
+            </div>
+            <div class="card">
+              <div class="tag">Quality</div>
+              <h3>Approval Rules</h3>
+              <p>Auto-block exports if PSNR dips below 28 dB or halo artifacts exceed threshold.</p>
+            </div>
+            <div class="card">
+              <div class="tag">Optimization</div>
+              <h3>Runtime Settings</h3>
+              <p>FP16 enabled, tile overlap at 24px, auto-batching for large stills.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section reveal" style="--delay: 0.3s">
+          <h2>Infrastructure</h2>
+          <p>Monitor worker nodes and manage the upscaling fleet.</p>
+          <div class="grid">
+            <div class="card">
+              <h3>GPU Cluster A</h3>
+              <p>6 nodes, RTX 6000 Ada. Real-ESRGAN priority routing.</p>
+            </div>
+            <div class="card">
+              <h3>GPU Cluster B</h3>
+              <p>4 nodes, RTX 4090. Dedicated to Real-CUGAN and Waifu2x.</p>
+            </div>
+            <div class="card">
+              <h3>Edge Pool</h3>
+              <p>2 nodes, Jetson Orin. Preview and thumbnail generation.</p>
+            </div>
+          </div>
+        </section>
+
+        <footer class="footer">
+          Admin Panel is a UI prototype. All data is static and shown for layout purposes only.
+        </footer>
+      </div>
+    </main>
+  </body>
+</html>

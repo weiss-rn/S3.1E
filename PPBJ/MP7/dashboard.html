@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Upscale Lab | Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container header-inner">
+        <div class="brand">Upscale Lab <span>ONNX</span></div>
+        <nav class="nav">
+          <a class="nav-link" href="index.html">Overview</a>
+          <a class="nav-link" href="upscale.html">Upscale UI</a>
+          <a class="nav-link active" href="dashboard.html">Dashboard</a>
+          <a class="nav-link" href="admin.html">Admin Panel</a>
+          <a class="btn" href="/logout">Logout</a>
+          <a class="btn primary" href="upscale.html">Start Upscaling</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <section class="hero reveal">
+          <div>
+            <h1>Operations Dashboard</h1>
+            <p>
+              Live visibility into queue health, ONNX model usage, and GPU utilization. This dashboard is a UI
+              prototype and does not connect to real data.
+            </p>
+            <div class="kpi-grid">
+              <div class="kpi">
+                <small>Throughput</small>
+                <h3>412 img/hr</h3>
+              </div>
+              <div class="kpi">
+                <small>Queue ETA</small>
+                <h3>18 min</h3>
+              </div>
+              <div class="kpi">
+                <small>GPU Load</small>
+                <h3>78%</h3>
+              </div>
+              <div class="kpi">
+                <small>Fail Rate</small>
+                <h3>1.7%</h3>
+              </div>
+            </div>
+          </div>
+          <div class="panel">
+            <h3>Throughput Trend</h3>
+            <p>Real-SR and Real-ESRGAN are the most active pipelines this hour.</p>
+            <div class="chart"></div>
+            <div class="stat-grid" style="margin-top: 14px;">
+              <div class="stat">
+                <span>Peak</span>
+                <strong>498/hr</strong>
+              </div>
+              <div class="stat">
+                <span>Median</span>
+                <strong>386/hr</strong>
+              </div>
+              <div class="stat">
+                <span>Latency</span>
+                <strong>3.2s</strong>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section reveal" style="--delay: 0.1s">
+          <h2>Queue Health</h2>
+          <p>Status overview for current upscaling requests and worker pools.</p>
+          <div class="grid">
+            <div class="card">
+              <div class="tag">Priority</div>
+              <h3>Express Queue</h3>
+              <p>34 jobs waiting. Average wait time: 5 minutes.</p>
+            </div>
+            <div class="card">
+              <div class="tag">Batch</div>
+              <h3>Studio Queue</h3>
+              <p>88 jobs waiting. Largest batch is 1,200 images.</p>
+            </div>
+            <div class="card">
+              <div class="tag">Workers</div>
+              <h3>GPU Fleet</h3>
+              <p>12 active, 2 idle, 1 in maintenance.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section reveal" style="--delay: 0.2s">
+          <h2>ONNX Model Usage</h2>
+          <p>Distribution of tasks across the upscaling models.</p>
+          <div class="panel">
+            <div style="display: grid; gap: 14px;">
+              <div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                  <strong>Real-ESRGAN</strong>
+                  <span>44%</span>
+                </div>
+                <div class="progress"><span style="width: 44%"></span></div>
+              </div>
+              <div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                  <strong>Real-SR</strong>
+                  <span>26%</span>
+                </div>
+                <div class="progress"><span style="width: 26%"></span></div>
+              </div>
+              <div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                  <strong>Real-CUGAN</strong>
+                  <span>18%</span>
+                </div>
+                <div class="progress"><span style="width: 18%"></span></div>
+              </div>
+              <div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                  <strong>Waifu2x</strong>
+                  <span>12%</span>
+                </div>
+                <div class="progress"><span style="width: 12%"></span></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section reveal" style="--delay: 0.3s">
+          <h2>Alerts</h2>
+          <p>Proactive notifications for pipeline quality and system stability.</p>
+          <div class="grid">
+            <div class="alert">
+              Two Waifu2x nodes are throttling due to thermal limits. Load shifted to Real-CUGAN pool.
+            </div>
+            <div class="card">
+              <h3>Quality Review</h3>
+              <p>7 images flagged for halo artifacts. QA team notified.</p>
+            </div>
+            <div class="card">
+              <h3>Maintenance Window</h3>
+              <p>GPU cluster B scheduled for updates at 02:00 AM.</p>
+            </div>
+          </div>
+        </section>
+
+        <footer class="footer">
+          Dashboard visuals are mock data to illustrate the operations UI for Upscale Lab.
+        </footer>
+      </div>
+    </main>
+  </body>
+</html>

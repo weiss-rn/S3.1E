@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Upscale Lab | Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container header-inner">
+        <div class="brand">Upscale Lab <span>ONNX</span></div>
+        <nav class="nav">
+          <a class="nav-link" href="index.html">Overview</a>
+          <a class="nav-link" href="upscale.html">Upscale UI</a>
+          <a class="nav-link active" href="login.html">Login</a>
+          <a class="btn primary" href="upscale.html">Start Upscaling</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <section class="hero reveal">
+          <div>
+            <h1>Secure Access</h1>
+            <p>
+              Sign in to unlock the operations dashboard and admin panel. This demo uses a simple local login
+              for UI access only.
+            </p>
+            <div class="highlight">
+              <strong>Demo credentials:</strong> admin / upscale123
+            </div>
+          </div>
+          <div class="panel">
+            <h3>Login</h3>
+            <div id="login-error" class="alert" style="display: none; margin-bottom: 14px;">
+              Invalid username or password. Please try again.
+            </div>
+            <form method="post" action="/login">
+              <div style="margin-bottom: 12px;">
+                <label for="username">Username</label>
+                <input id="username" name="username" autocomplete="username" required />
+              </div>
+              <div style="margin-bottom: 12px;">
+                <label for="password">Password</label>
+                <input id="password" name="password" type="password" autocomplete="current-password" required />
+              </div>
+              <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                <button class="btn primary" type="submit">Sign in</button>
+                <a class="btn" href="index.html">Cancel</a>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <footer class="footer">
+          Access is restricted to authorized users only. Use the demo login to view protected pages.
+        </footer>
+      </div>
+    </main>
+
+    <script>
+      (function () {
+        var params = new URLSearchParams(window.location.search);
+        if (params.get("error") === "1") {
+          var el = document.getElementById("login-error");
+          if (el) {
+            el.style.display = "block";
+          }
+        }
+      })();
+    </script>
+  </body>
+</html>

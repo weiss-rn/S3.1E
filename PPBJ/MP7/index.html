@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Upscale Lab | ONNX Image Upscaling</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container header-inner">
+        <div class="brand">Upscale Lab <span>ONNX</span></div>
+        <nav class="nav">
+          <a class="nav-link active" href="index.html">Overview</a>
+          <a class="nav-link" href="upscale.html">Upscale UI</a>
+          <a class="nav-link" href="login.html">Login</a>
+          <a class="btn primary" href="upscale.html">Start Upscaling</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <section class="hero reveal">
+          <div>
+            <h1>Precision upscaling for every pixel.</h1>
+            <p>
+              Upscale Lab is a concept UI for an image super-resolution platform that runs ONNX models like
+              Real-SR, Real-ESRGAN, Real-CUGAN, and Waifu2x. The focus is clarity, consistency, and fast review
+              for teams that ship clean visuals.
+            </p>
+            <div class="hero-actions">
+              <a class="btn primary" href="upscale.html">Open Upscale Console</a>
+              <a class="btn secondary" href="login.html">Admin Access Login</a>
+            </div>
+          </div>
+          <div class="hero-card">
+            <h3>Processing Snapshot</h3>
+            <p>Live queue summary for the current shift.</p>
+            <div class="stat-grid">
+              <div class="stat">
+                <span>Queue Size</span>
+                <strong>128 jobs</strong>
+              </div>
+              <div class="stat">
+                <span>Active Workers</span>
+                <strong>12 GPUs</strong>
+              </div>
+              <div class="stat">
+                <span>Avg Runtime</span>
+                <strong>42 sec</strong>
+              </div>
+              <div class="stat">
+                <span>QA Pass Rate</span>
+                <strong>96.4%</strong>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section reveal" style="--delay: 0.1s">
+          <h2>Platform Description</h2>
+          <p>
+            This site showcases a full UI/UX system for an AI upscaling studio. It includes a user interface for
+            uploads, an operational dashboard, and an admin panel that governs policy, users, and compute fleets.
+          </p>
+          <div class="grid">
+            <div class="card">
+              <div class="tag">Workflow</div>
+              <h3>Guided Upscaling</h3>
+              <p>Intuitive controls for scale factor, denoise strength, and output format with instant previews.</p>
+            </div>
+            <div class="card">
+              <div class="tag">Operations</div>
+              <h3>Live Monitoring</h3>
+              <p>Track throughput, GPU load, and latency trends in one dashboard with clear status signals.</p>
+            </div>
+            <div class="card">
+              <div class="tag">Governance</div>
+              <h3>Admin Control</h3>
+              <p>Manage roles, API access, and model availability across teams without touching the pipeline.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section reveal" style="--delay: 0.2s">
+          <h2>ONNX Model Suite</h2>
+          <p>Each model is packaged as an ONNX runtime profile with curated presets and recommended usage.</p>
+          <div class="grid">
+            <div class="card">
+              <div class="tag">Photoreal</div>
+              <h3>Real-SR</h3>
+              <p>Classic super-resolution for real-world photos. Balanced sharpness with natural texture recovery.</p>
+            </div>
+            <div class="card">
+              <div class="tag">Premium</div>
+              <h3>Real-ESRGAN</h3>
+              <p>High-detail enhancement with robust de-artifacting for noisy or compressed images.</p>
+            </div>
+            <div class="card">
+              <div class="tag">Anime</div>
+              <h3>Real-CUGAN</h3>
+              <p>Line preservation and clean color gradients for illustration and stylized artwork.</p>
+            </div>
+            <div class="card">
+              <div class="tag">Illustration</div>
+              <h3>Waifu2x</h3>
+              <p>Lightweight ONNX model tuned for anime upscaling with optional noise reduction.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section highlight reveal" style="--delay: 0.3s">
+          <h2>Why ONNX</h2>
+          <ul class="list">
+            <li><span>01</span> Consistent inference across GPU fleets, desktops, and edge devices.</li>
+            <li><span>02</span> Portable runtime profiles for batch jobs, web previews, and offline pipelines.</li>
+            <li><span>03</span> Faster iteration on model variants without changing the user experience.</li>
+            <li><span>04</span> Integrated quality checks and automatic fallback models for stability.</li>
+          </ul>
+        </section>
+
+        <section class="section reveal" style="--delay: 0.4s">
+          <h2>Access Control</h2>
+          <p>Public visitors can explore the overview and upscale UI. Admin tools require sign-in.</p>
+          <div class="grid">
+            <div class="card">
+              <div class="tag">Public</div>
+              <h3>Overview + Upscale UI</h3>
+              <p>Browse model descriptions, presets, and upscaling configuration options.</p>
+            </div>
+            <a class="card" href="login.html">
+              <div class="tag">Restricted</div>
+              <h3>Admin + Dashboard</h3>
+              <p>Sign in to unlock operations monitoring and governance tools.</p>
+            </a>
+          </div>
+        </section>
+
+        <footer class="footer">
+          Upscale Lab is a UI prototype for an ONNX-powered super-resolution platform. No real processing occurs.
+        </footer>
+      </div>
+    </main>
+  </body>
+</html>

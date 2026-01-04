@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Upscale Lab | Upscale Console</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container header-inner">
+        <div class="brand">Upscale Lab <span>ONNX</span></div>
+        <nav class="nav">
+          <a class="nav-link" href="index.html">Overview</a>
+          <a class="nav-link active" href="upscale.html">Upscale UI</a>
+          <a class="nav-link" href="login.html">Login</a>
+          <a class="btn primary" href="upscale.html">Start Upscaling</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <section class="hero reveal">
+          <div>
+            <h1>Upscale Console</h1>
+            <p>
+              Drop files, select the ONNX model, and preview the final output. This UI simulates the upscaling
+              workflow without running any real inference.
+            </p>
+            <div class="hero-actions">
+              <span class="badge">Ready for Review</span>
+              <span class="badge">Output: 4x</span>
+            </div>
+          </div>
+          <div class="panel">
+            <h3>Quick Presets</h3>
+            <p>Choose a preset for a fast, consistent configuration.</p>
+            <div class="grid">
+              <div class="card">
+                <h3>Studio Clean</h3>
+                <p>Real-ESRGAN with balanced detail and mild denoise.</p>
+              </div>
+              <div class="card">
+                <h3>Anime Sharp</h3>
+                <p>Real-CUGAN with line-focused upscaling.</p>
+              </div>
+              <div class="card">
+                <h3>Archive Restore</h3>
+                <p>Real-SR tuned for noisy scans.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section reveal" style="--delay: 0.1s">
+          <h2>Upload and Settings</h2>
+          <p>Configure an upscaling job with the required parameters and export settings.</p>
+          <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+            <div class="panel">
+              <div class="dropzone">
+                <h3>Drop files here</h3>
+                <p>PNG, JPG, or TIFF. Max 120MB per image.</p>
+                <div style="margin-top: 16px;">
+                  <button class="btn secondary" type="button">Browse Files</button>
+                </div>
+              </div>
+              <div style="margin-top: 16px;" class="highlight">
+                <strong>Tip:</strong> Use Waifu2x for smaller illustrations and Real-ESRGAN for photos.
+              </div>
+            </div>
+            <div class="panel">
+              <form class="form-grid">
+                <div>
+                  <label for="model">ONNX Model</label>
+                  <select id="model" name="model">
+                    <option>Real-ESRGAN</option>
+                    <option>Real-SR</option>
+                    <option>Real-CUGAN</option>
+                    <option>Waifu2x</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="scale">Scale Factor</label>
+                  <select id="scale" name="scale">
+                    <option>2x</option>
+                    <option selected>4x</option>
+                    <option>6x</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="denoise">Denoise Level</label>
+                  <select id="denoise" name="denoise">
+                    <option>Low</option>
+                    <option selected>Medium</option>
+                    <option>High</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="format">Output Format</label>
+                  <select id="format" name="format">
+                    <option>PNG</option>
+                    <option>JPG</option>
+                    <option>TIFF</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="notes">Job Notes</label>
+                  <textarea id="notes" name="notes" rows="3" placeholder="Describe the intended usage"></textarea>
+                </div>
+              </form>
+              <div style="margin-top: 16px; display: flex; gap: 12px; flex-wrap: wrap;">
+                <button class="btn primary" type="button">Queue Job</button>
+                <button class="btn" type="button">Save Preset</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section reveal" style="--delay: 0.2s">
+          <h2>Preview</h2>
+          <p>Side-by-side comparison for quick sign-off before exporting.</p>
+          <div class="preview">
+            <div class="preview-box">Before</div>
+            <div class="preview-box">After (4x)</div>
+          </div>
+        </section>
+
+        <section class="section reveal" style="--delay: 0.3s">
+          <h2>Job Summary</h2>
+          <p>Detailed metadata for QA and delivery teams.</p>
+          <div class="grid">
+            <div class="card">
+              <h3>Model Pipeline</h3>
+              <p>Real-ESRGAN ONNX runtime, FP16 acceleration, auto-tiling enabled.</p>
+            </div>
+            <div class="card">
+              <h3>Output</h3>
+              <p>4x scale, 4096x4096 max, PNG format with lossless compression.</p>
+            </div>
+            <div class="card">
+              <h3>Delivery</h3>
+              <p>Export to studio bucket, notify QA for artifact review.</p>
+            </div>
+          </div>
+        </section>
+
+        <footer class="footer">
+          Upscale Console is a visual concept only. No files are processed or uploaded.
+        </footer>
+      </div>
+    </main>
+  </body>
+</html>
