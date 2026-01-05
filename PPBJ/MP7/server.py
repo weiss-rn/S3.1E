@@ -87,7 +87,7 @@ class UpscaleHandler(BaseHTTPRequestHandler):
             del SESSIONS[token]
 
         self.send_response(302)
-        self.send_header("Location", "/")
+        self.send_header("Location", "/login")
         self.send_header("Set-Cookie", "session=; Path=/; Max-Age=0")
         self.end_headers()
 
