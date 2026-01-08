@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detik News Scraper</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+            transition: transform 0.3s ease;
+        }
+        
+        .container:hover {
+            transform: translateY(-5px);
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        p {
+            color: #666;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            color: white;
+        }
+        
+        .btn i {
+            margin-right: 10px;
+        }
+        
+        .features {
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0;
+        }
+        
+        .feature {
+            text-align: center;
+            padding: 15px;
+        }
+        
+        .feature i {
+            font-size: 2rem;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .feature h3 {
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .feature p {
+            color: #777;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+        
+        footer {
+            margin-top: 30px;
+            color: #888;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .features {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><i class="fas fa-newspaper"></i> Detik News Scraper</h1>
+        <p>Welcome to our news scraper application. Click below to view the latest scraped articles from Detik Jatim.</p>
+        
+        <div class="features">
+            <div class="feature">
+                <i class="fas fa-bolt"></i>
+                <h3>Fast</h3>
+                <p>Real-time scraping</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>Responsive</h3>
+                <p>Works on all devices</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-images"></i>
+                <h3>Visual</h3>
+                <p>Article images included</p>
+            </div>
+        </div>
+        
+        <a href="/scraped-detik" class="btn"><i class="fas fa-search"></i> View Scraped Articles</a>
+        
+        <footer>
+            <p>© 2023 Detik News Scraper | Built with Flask</p>
+        </footer>
+    </div>
+</body>
+</html>
