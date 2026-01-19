@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block title %}Keranjang - MotoSpare Mart{% endblock %}
+
+{% block content %}
+<div class="mt-3">
+    <div class="cart-hero">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-start gap-3">
+            <div>
+                <h5 class="fw-bold mb-1">Keranjang</h5>
+                <p class="small text-muted mb-0">Tersimpan otomatis, checkout kapan saja.</p>
+            </div>
+            <a href="{{ url_for('index') }}" class="btn btn-outline-secondary btn-sm">Tambah Belanja</a>
+        </div>
+    </div>
+</div>
+
+{% if cart_items %}
+    {% set subtotal = cart_items | map(attribute='price') | sum | round(0, 'floor') | int %}
+    {% set shipping = 15000 %}
+    {% set discount = 10000 %}
+    {% set total = subtotal + shipping - discount %}
+
+    <div class="promo-banner mt-3">
+        <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+            <div><i class="fas fa-gift me-2"></i>Gratis ongkir untuk order di atas Rp 250.000</div>
+            <div class="small">Kode: <strong>MOTO24</strong></div>
+        </div>
+    </div>
+
+    <div class="d-flex flex-column gap-2 mt-3">
+        {% for item in cart_items %}
+            <div class="cart-card d-flex align-items-center gap-3">
+                <img src="{{ url_for('static', filename='img/' ~ item.image) if item.image else 'https://via.placeholder.com/120x120?text=Produk' }}" alt="{{ item.name }}" class="item-thumb">
+                <div class="flex-fill">
+                    <div class="fw-semibold small mb-1 text-truncate">{{ item.name }}</div>
+                    <div class="price-tag mb-0">Rp {{ "%.0f"|format(item.price) }}</div>
+                </div>
+                <a href="{{ url_for('add_to_cart', id=item.id) }}" class="btn btn-outline-secondary btn-sm">Tambah</a>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="summary mt-3">
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <span class="text-muted small">Subtotal</span>
+                <div class="fw-bold">Rp {{ "{:,}".format(subtotal).replace(",", ".") }}</div>
+            </div>
+            <button class="btn btn-outline-secondary btn-sm" type="button" disabled title="Fitur belum tersedia">Edit kuantitas</button>
+        </div>
+        <div class="d-flex justify-content-between mt-3">
+            <span class="text-muted small">Estimasi ongkir</span>
+            <strong>Rp {{ "{:,}".format(shipping).replace(",", ".") }}</strong>
+        </div>
+        <div class="d-flex justify-content-between mt-1">
+            <span class="text-muted small">Diskon kode</span>
+            <strong>-Rp {{ "{:,}".format(discount).replace(",", ".") }}</strong>
+        </div>
+        <div class="border-top mt-3 pt-2 d-flex justify-content-between">
+            <span class="fw-semibold">Total Bayar</span>
+            <strong>Rp {{ "{:,}".format(total).replace(",", ".") }}</strong>
+        </div>
+    </div>
+
+    <div class="d-grid gap-2 mt-3">
+        <a href="{{ url_for('checkout') }}" class="btn btn-primary py-2">Lanjut Checkout</a>
+    </div>
+{% else %}
+    <div class="empty-state mt-4">
+        <div class="empty-icon"><i class="fas fa-shopping-cart"></i></div>
+        <div class="fw-semibold">Keranjang masih kosong</div>
+        <div class="text-muted small mb-3">Pilih produk di beranda untuk mulai belanja.</div>
+        <a href="{{ url_for('index') }}" class="btn btn-primary btn-sm">Cari Produk</a>
+    </div>
+{% endif %}
+{% endblock %}
+
+{% block bottom %}
+<nav class="bottom-nav" aria-label="Navigasi bawah">
+    <a href="{{ url_for('index') }}" class="{{ 'active' if request.path == '/' else '' }}">
+        <i class="fas fa-home"></i>
+        <div>Home</div>
+    </a>
+    <a href="{{ url_for('cart') }}" class="{{ 'active' if request.path.startswith('/cart') else '' }}">
+        <i class="fas fa-shopping-cart"></i>
+        <div>Cart</div>
+    </a>
+    <a href="/profile" class="{{ 'active' if request.path.startswith('/profile') else '' }}">
+        <i class="fas fa-user"></i>
+        <div>Profil</div>
+    </a>
+</nav>
+{% endblock %}
+

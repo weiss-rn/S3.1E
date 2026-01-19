@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Login Admin - MotoSpare Mart{% endblock %}
+
+{% block content %}
+<div class="mt-4 d-flex justify-content-center">
+    <div class="card-soft" style="max-width: 460px; width: 100%;">
+        <div class="d-flex align-items-center justify-content-between mb-3">
+            <div>
+                <h4 class="fw-bold mb-1">Login Admin</h4>
+                <div class="text-muted small">Masuk untuk mengelola katalog.</div>
+            </div>
+            <a href="{{ url_for('index') }}" class="btn btn-outline-secondary btn-sm">Kembali</a>
+        </div>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form method="post" class="d-grid gap-3">
+            <div>
+                <label class="form-label">Username</label>
+                <input type="text" class="form-control" name="username" required autofocus>
+            </div>
+            <div>
+                <label class="form-label">Password</label>
+                <input type="password" class="form-control" name="password" required>
+            </div>
+            <input type="hidden" name="next" value="{{ next_url or '' }}">
+            <button type="submit" class="btn btn-primary">Masuk</button>
+        </form>
+        <div class="small text-muted mt-3">Akses admin hanya tersedia lewat URL.</div>
+    </div>
+</div>
+{% endblock %}
