@@ -1,84 +1,127 @@
 {% extends "base.html" %}
-{% block title %}MotoSpare Mart{% endblock %}
+{% block title %}MotoSpare Mart - Spare Part Motor Terlengkap{% endblock %}
 
 {% block content %}
 {% set current_endpoint = endpoint|default(request.endpoint) %}
 {% set url_params = url_params|default({}) %}
 
-<form class="search-group mt-3" role="search" method="get" action="{{ url_for_params(current_endpoint, url_params) }}">
-    <div class="input-group">
-        <span class="input-group-text"><i class="fas fa-search text-muted"></i></span>
-        <input type="search" class="form-control search-box" name="q" value="{{ q or '' }}" placeholder="Cari spare part, oli, rem, rantai..." aria-label="Cari produk">
-        {% if q %}
-            <a class="btn btn-outline-secondary" href="{{ url_for_params(current_endpoint, url_params) }}" aria-label="Reset pencarian"><i class="fas fa-xmark"></i></a>
-        {% endif %}
-        <button class="btn btn-primary" type="submit" aria-label="Cari"><i class="fas fa-arrow-right"></i></button>
-    </div>
-</form>
+<!-- Search Section -->
+<div class="search-container mb-4">
+    <form class="search-group" role="search" method="get" action="{{ url_for_params(current_endpoint, url_params) }}">
+        <div class="input-group">
+            <span class="input-group-text"><i class="fas fa-search"></i></span>
+            <input type="search" class="form-control search-box" name="q" 
+                   value="{{ q or '' }}" 
+                   placeholder="Cari spare part motor..." 
+                   aria-label="Cari produk">
+            {% if q %}
+                <a class="btn btn-outline-secondary" href="{{ url_for_params(current_endpoint, url_params) }}" 
+                   aria-label="Reset pencarian">
+                    <i class="fas fa-times"></i>
+                </a>
+            {% endif %}
+            <button class="btn btn-primary" type="submit" aria-label="Cari">
+                <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </form>
+    {% if q %}
+        <div class="d-flex align-items-center justify-content-between mt-2">
+            <div class="small text-muted">Hasil untuk <strong>{{ q }}</strong> ({{ total }} produk)</div>
+            {% if total_pages > 1 %}
+                <div class="small text-muted">Halaman {{ page }} / {{ total_pages }}</div>
+            {% endif %}
+        </div>
+    {% else %}
+        <div class="small text-muted">{{ total }} produk tersedia</div>
+    {% endif %}
+</div>
 
-{% if q %}
-    <div class="d-flex align-items-center justify-content-between mt-2">
-        <div class="small text-muted">Hasil untuk <strong>{{ q }}</strong> ({{ total }} produk)</div>
-        {% if total_pages > 1 %}
-            <div class="small text-muted">Halaman {{ page }} / {{ total_pages }}</div>
-        {% endif %}
-    </div>
-{% else %}
-    <div class="small text-muted mt-2">{{ total }} produk tersedia</div>
-{% endif %}
-
-<section class="hero-banner mt-3">
-    <div class="row g-3 align-items-center">
-        <div class="col-12 col-md-7">
-            <span class="badge rounded-pill">Bengkel Terpercaya</span>
-            <h3 class="mt-2 mb-2">Cari spare part motor? Kami kirim <strong>hari yang sama</strong>.</h3>
-            <p class="mb-3 text-white-50">MotoSpare Mart menyediakan oli, kelistrikan, dan part mesin untuk semua tipe motor harian dan touring.</p>
+<!-- Hero Banner -->
+<section class="hero-banner mb-4">
+    <div class="row align-items-center">
+        <div class="col-12 col-lg-8 position-relative">
+            <span class="hero-badge">
+                <i class="fas fa-check-circle me-1"></i>Bengkel Terpercaya
+            </span>
+            <h3 class="mt-3">
+                Cari spare part motor? 
+                <br>
+                Kami kirim <strong>hari yang sama</strong>.
+            </h3>
+            <p class="mb-4">
+                MotoSpare Mart menyediakan oli, kelistrikan, dan part mesin 
+                untuk semua tipe motor harian dan touring. Kualitas original, 
+                harga bersahabat.
+            </p>
             <div class="d-flex flex-wrap gap-2">
-                <a href="{{ url_for('products') }}" class="btn btn-warning text-dark">Lihat Koleksi</a>
-                <a href="{{ url_for('cart') }}" class="btn btn-outline-light">Cek Keranjang</a>
+                <a href="{{ url_for('products') }}" class="btn btn-warning">
+                    <i class="fas fa-th-large me-1"></i>Lihat Koleksi
+                </a>
+                <a href="{{ url_for('cart') }}" class="btn btn-outline-secondary" style="color: white; border-color: rgba(255,255,255,0.3);">
+                    <i class="fas fa-shopping-cart me-1"></i>Cek Keranjang
+                </a>
             </div>
         </div>
-        <div class="col-12 col-md-5">
-            <div class="d-flex flex-wrap gap-2 mb-2">
-                <span class="filter-pill">Ready Stock</span>
-                <span class="filter-pill">Chat 24/7</span>
-                <span class="filter-pill">Kirim Hari Ini</span>
+        <div class="col-12 col-lg-4 mt-4 mt-lg-0">
+            <div class="d-flex flex-wrap gap-2">
+                <span class="filter-pill">
+                    <i class="fas fa-check"></i> Ready Stock
+                </span>
+                <span class="filter-pill">
+                    <i class="fas fa-headset"></i> Chat 24/7
+                </span>
+                <span class="filter-pill">
+                    <i class="fas fa-truck"></i> Kirim Hari Ini
+                </span>
+                <span class="filter-pill">
+                    <i class="fas fa-shield-alt"></i> Garansi Resmi
+                </span>
             </div>
-            <div class="small text-white-50">Dukungan pengiriman untuk kota besar, plus konsultasi teknisi gratis.</div>
+            <div class="mt-3 text-white-50 small">
+                Dukungan pengiriman untuk kota besar, plus konsultasi teknisi gratis.
+            </div>
         </div>
     </div>
 </section>
 
-<section class="mt-3">
+<!-- Highlight Features -->
+<section class="mb-4">
     <div class="row g-3">
-        <div class="col-12 col-md-4">
+        <div class="col-12 col-sm-4">
             <div class="highlight-card">
                 <div class="d-flex align-items-center gap-3">
-                    <i class="fas fa-shield-alt"></i>
                     <div>
-                        <h6 class="mb-0 fw-bold">Kualitas Original</h6>
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div>
+                        <h6 class="mb-1 fw-bold">Kualitas Original</h6>
                         <small class="text-muted">Pilih bermerek resmi, semua bergaransi.</small>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-12 col-md-4">
+        <div class="col-12 col-sm-4">
             <div class="highlight-card">
                 <div class="d-flex align-items-center gap-3">
-                    <i class="fas fa-bolt"></i>
                     <div>
-                        <h6 class="mb-0 fw-bold">Pengiriman Kilat</h6>
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div>
+                        <h6 class="mb-1 fw-bold">Pengiriman Kilat</h6>
                         <small class="text-muted">Proses cepat untuk kota besar.</small>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-12 col-md-4">
+        <div class="col-12 col-sm-4">
             <div class="highlight-card">
                 <div class="d-flex align-items-center gap-3">
-                    <i class="fas fa-headset"></i>
                     <div>
-                        <h6 class="mb-0 fw-bold">Teknisi Profesional</h6>
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <div>
+                        <h6 class="mb-1 fw-bold">Teknisi Profesional</h6>
                         <small class="text-muted">Konsultasi gratis via chat.</small>
                     </div>
                 </div>
@@ -87,77 +130,85 @@
     </div>
 </section>
 
-<section class="banner mt-3">
-    <div id="carouselSlide" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="https://via.placeholder.com/900x300?text=Promo+Spare+Part+Motor" class="d-block w-100" alt="Promo Spare Part Motor">
-            </div>
-            <div class="carousel-item">
-                <img src="https://via.placeholder.com/900x300?text=Diskon+Oli+dan+Filter" class="d-block w-100" alt="Diskon Oli dan Filter">
-            </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselSlide" data-bs-slide="prev" aria-label="Sebelumnya">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselSlide" data-bs-slide="next" aria-label="Berikutnya">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        </button>
+<!-- Categories -->
+<section class="mb-4">
+    <div class="section-heading">
+        <h5 class="fw-bold mb-0">
+            <i class="fas fa-layer-group me-2"></i>Kategori Pilihan
+        </h5>
+        <a href="{{ url_for('category', slug='semua', q=q) }}">Lihat semua <i class="fas fa-arrow-right ms-1"></i></a>
     </div>
-</section>
-
-<section class="mt-4">
-    <div class="section-heading mb-3">
-        <h5 class="fw-bold mb-0">Kategori</h5>
-        <a href="{{ url_for('category', slug='semua', q=q) }}">Lihat semua</a>
-    </div>
-    <div class="row text-center g-3">
+    <div class="row g-3 mt-1">
         {% for cat in categories %}
-            <div class="col-4 col-sm-3 col-md-2">
-                <a class="text-decoration-none" href="{{ url_for('category', slug=cat.slug, q=q) }}">
+            <div class="col-4 col-sm-4 col-md-2">
+                <a class="text-decoration-none d-block text-center" href="{{ url_for('category', slug=cat.slug, q=q) }}">
                     <div class="cat-icon {{ 'is-active' if (active_category|default('semua')) == cat.slug else '' }}">
                         <i class="fas {{ cat.icon }}"></i>
                     </div>
-                    <small>{{ cat.label }}</small>
+                    <small class="fw-semibold">{{ cat.label }}</small>
                 </a>
             </div>
         {% endfor %}
     </div>
 </section>
 
-<section class="mt-4 mb-4">
-    <div class="section-heading mb-2">
-        <h5 class="fw-bold mb-0">Rekomendasi Spare Part</h5>
-        <a href="{{ url_for('products') }}">Lihat semua</a>
+<!-- Products Section -->
+<section class="mb-4">
+    <div class="section-heading mb-3">
+        <h5 class="fw-bold mb-0">
+            <i class="fas fa-star me-2" style="color: var(--warning);"></i>Rekomendasi Spare Part
+        </h5>
+        <a href="{{ url_for('products') }}">Lihat semua <i class="fas fa-arrow-right ms-1"></i></a>
     </div>
-    <div class="mb-3">
-        <span class="filter-pill filter-pill-light">Filter: Oli • Rem • Rantai</span>
-    </div>
+    
+    {% if q %}
+        <div class="mb-3">
+            <span class="filter-pill filter-pill-light">
+                <i class="fas fa-filter"></i> Hasil pencarian: "{{ q }}"
+            </span>
+        </div>
+    {% else %}
+        <div class="mb-3">
+            <span class="filter-pill filter-pill-light">
+                <i class="fas fa-tags"></i> Terlaris: Oli • Rem • Rantai
+            </span>
+        </div>
+    {% endif %}
 
     {% if products %}
         <div class="row g-3">
             {% for product in products %}
                 <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="product-card h-100 d-flex flex-column position-relative">
+                    <article class="product-card h-100 d-flex flex-column">
                         {% if product.category %}
-                            <span class="pill position-absolute top-0 start-0 m-2">{{ category_labels.get(product.category, product.category) }}</span>
+                            <span class="pill position-absolute top-0 start-0 m-3">
+                                {{ category_labels.get(product.category, product.category) }}
+                            </span>
                         {% else %}
-                            <span class="pill position-absolute top-0 start-0 m-2">Produk</span>
+                            <span class="pill position-absolute top-0 start-0 m-3">Produk</span>
                         {% endif %}
-                        <img src="{{ url_for('static', filename='img/' ~ product.image) if product.image else 'https://via.placeholder.com/320x200?text=Produk' }}" class="product-img" alt="{{ product.name }}">
+                        <img src="{{ url_for('static', filename='img/' ~ product.image) if product.image else 'https://via.placeholder.com/320x200?text=Produk' }}" 
+                             class="product-img" alt="{{ product.name }}" loading="lazy">
                         <div class="p-3 d-flex flex-column flex-fill">
-                            <div class="small text-muted text-truncate mb-1">{{ product.name }}</div>
-                            <div class="price-tag">Rp {{ "%.0f"|format(product.price) }}</div>
-                            <div class="d-flex gap-2 mt-auto">
-                                <a href="{{ url_for('product_data', id=product.id) }}" class="btn btn-outline-secondary btn-sm w-50">Detail</a>
-                                <a href="{{ url_for('add_to_cart', id=product.id) }}" class="btn btn-primary btn-sm w-50">Tambah</a>
+                            <div class="flex-fill">
+                                <div class="fw-semibold small text-truncate mb-2">{{ product.name }}</div>
+                                <div class="price-tag">Rp {{ "{:,}".format(product.price | round(0, 'floor') | int).replace(",", ".") }}</div>
+                            </div>
+                            <div class="d-flex gap-2 mt-3">
+                                <a href="{{ url_for('product_data', id=product.id) }}" 
+                                   class="btn btn-outline-secondary btn-sm w-50">Detail</a>
+                                <a href="{{ url_for('add_to_cart', id=product.id) }}" 
+                                   class="btn btn-primary btn-sm w-50">
+                                    <i class="fas fa-plus"></i> Tambah
+                                </a>
                             </div>
                         </div>
-                    </div>
+                    </article>
                 </div>
             {% endfor %}
         </div>
 
+        <!-- Pagination -->
         {% if total_pages > 1 %}
             {% set ns = namespace(start=page-2, end=page+2) %}
             {% if ns.start < 1 %}
@@ -171,15 +222,18 @@
             {% if ns.start < 1 %}{% set ns.start = 1 %}{% endif %}
 
             <nav class="mt-4" aria-label="Pagination produk">
-                <ul class="pagination pagination-sm justify-content-center flex-wrap gap-1">
+                <ul class="pagination pagination-sm justify-content-center">
                     <li class="page-item {{ 'disabled' if page <= 1 else '' }}">
-                        <a class="page-link" href="{{ url_for_params(current_endpoint, url_params, q=q, page=page-1) if page > 1 else '#' }}" aria-label="Sebelumnya">
-                            <span aria-hidden="true">&laquo;</span>
+                        <a class="page-link" href="{{ url_for_params(current_endpoint, url_params, q=q, page=page-1) if page > 1 else '#' }}" 
+                           aria-label="Sebelumnya">
+                            <i class="fas fa-chevron-left"></i>
                         </a>
                     </li>
 
                     {% if ns.start > 1 %}
-                        <li class="page-item"><a class="page-link" href="{{ url_for_params(current_endpoint, url_params, q=q, page=1) }}">1</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="{{ url_for_params(current_endpoint, url_params, q=q, page=1) }}">1</a>
+                        </li>
                         {% if ns.start > 2 %}
                             <li class="page-item disabled"><span class="page-link">…</span></li>
                         {% endif %}
@@ -195,23 +249,41 @@
                         {% if ns.end < total_pages - 1 %}
                             <li class="page-item disabled"><span class="page-link">…</span></li>
                         {% endif %}
-                        <li class="page-item"><a class="page-link" href="{{ url_for_params(current_endpoint, url_params, q=q, page=total_pages) }}">{{ total_pages }}</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="{{ url_for_params(current_endpoint, url_params, q=q, page=total_pages) }}">{{ total_pages }}</a>
+                        </li>
                     {% endif %}
 
                     <li class="page-item {{ 'disabled' if page >= total_pages else '' }}">
-                        <a class="page-link" href="{{ url_for_params(current_endpoint, url_params, q=q, page=page+1) if page < total_pages else '#' }}" aria-label="Berikutnya">
-                            <span aria-hidden="true">&raquo;</span>
+                        <a class="page-link" href="{{ url_for_params(current_endpoint, url_params, q=q, page=page+1) if page < total_pages else '#' }}" 
+                           aria-label="Berikutnya">
+                            <i class="fas fa-chevron-right"></i>
                         </a>
                     </li>
                 </ul>
             </nav>
         {% endif %}
     {% else %}
-        <div class="alert alert-light text-center small">
+        <div class="alert alert-light text-center py-5">
+            <div class="empty-icon"><i class="fas fa-search"></i></div>
+            <div class="fw-semibold mb-1">
+                {% if q %}
+                    Produk tidak ditemukan
+                {% else %}
+                    Belum ada produk
+                {% endif %}
+            </div>
+            <div class="text-muted small mb-3">
+                {% if q %}
+                    Coba kata kunci lain atau kategori berbeda.
+                {% else %}
+                    Produk akan segera tersedia.
+                {% endif %}
+            </div>
             {% if q %}
-                Produk dengan kata kunci <strong>{{ q }}</strong> tidak ditemukan.
-            {% else %}
-                Belum ada produk.
+                <a href="{{ url_for('index') }}" class="btn btn-outline-secondary btn-sm">
+                    <i class="fas fa-undo me-1"></i>Reset Pencarian
+                </a>
             {% endif %}
         </div>
     {% endif %}
@@ -222,15 +294,19 @@
 <nav class="bottom-nav" aria-label="Navigasi bawah">
     <a href="{{ url_for('index') }}" class="{{ 'active' if request.path == '/' else '' }}">
         <i class="fas fa-home"></i>
-        <div>Home</div>
+        <span>Home</span>
+    </a>
+    <a href="{{ url_for('category', slug='semua') }}" class="{{ 'active' if request.path.startswith('/kategori') else '' }}">
+        <i class="fas fa-th-large"></i>
+        <span>Kategori</span>
     </a>
     <a href="{{ url_for('cart') }}" class="{{ 'active' if request.path.startswith('/cart') else '' }}">
         <i class="fas fa-shopping-cart"></i>
-        <div>Cart</div>
+        <span>Keranjang</span>
     </a>
     <a href="/profile" class="{{ 'active' if request.path.startswith('/profile') else '' }}">
         <i class="fas fa-user"></i>
-        <div>Profil</div>
+        <span>Profil</span>
     </a>
 </nav>
 {% endblock %}

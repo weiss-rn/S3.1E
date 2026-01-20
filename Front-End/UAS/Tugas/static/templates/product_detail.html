@@ -2,61 +2,127 @@
 {% block title %}{{ product.name }} - MotoSpare Mart{% endblock %}
 
 {% block content %}
-<div class="mt-3">
-    <img src="{{ url_for('static', filename='img/' ~ product.image) if product.image else 'https://via.placeholder.com/640x360?text=Produk' }}" class="product-hero-img" alt="{{ product.name }}">
+<div class="product-detail-page">
+    <!-- Back Button -->
+    <a href="javascript:history.back()" class="btn btn-outline-secondary btn-sm mb-3">
+        <i class="fas fa-arrow-left me-1"></i>Kembali
+    </a>
 
-    <div class="info-card mt-3">
-        <div class="d-flex justify-content-between align-items-start gap-3">
+    <!-- Product Hero -->
+    <div class="mb-4">
+        <img src="{{ url_for('static', filename='img/' ~ product.image) if product.image else 'https://via.placeholder.com/640x360?text=Produk' }}" 
+             class="product-hero-img" alt="{{ product.name }}" loading="eager">
+    </div>
+
+    <!-- Product Info Card -->
+    <div class="info-card mb-4">
+        <div class="d-flex justify-content-between align-items-start gap-3 mb-3">
             <div class="flex-fill">
-                <h5 class="fw-bold mb-1">{{ product.name }}</h5>
-                <div class="price-tag">Rp {{ "%.0f"|format(product.price) }}</div>
-                {% if product.category %}
-                    <div class="mt-2">
-                        <a class="feature-badge text-decoration-none" href="{{ url_for('category', slug=product.category) }}">
-                            <i class="fas fa-tag me-1"></i>Kategori: {{ category_labels.get(product.category, product.category) }}
-                        </a>
-                    </div>
-                {% endif %}
+                <span class="badge bg-primary mb-2" style="font-weight: 600; padding: 6px 12px;">
+                    <i class="fas fa-tag me-1"></i>{{ category_labels.get(product.category, product.category) }}
+                </span>
+                <h5 class="fw-bold mb-2">{{ product.name }}</h5>
+                <div class="price-tag fs-4 mb-2">
+                    Rp {{ "{:,}".format(product.price | round(0, 'floor') | int).replace(",", ".") }}
+                </div>
             </div>
-            <span class="pill">Ready</span>
+            <span class="pill">
+                <i class="fas fa-check-circle me-1"></i>Ready Stock
+            </span>
         </div>
 
-        <div class="d-flex flex-wrap gap-2 mt-3">
-            <span class="feature-badge"><i class="fas fa-bolt me-1"></i>Stok Terbatas</span>
-            <span class="feature-badge"><i class="fas fa-shield-alt me-1"></i>Garansi 7 Hari</span>
-            <span class="feature-badge"><i class="fas fa-truck me-1"></i>COD + Pickup</span>
+        <!-- Quick Features -->
+        <div class="d-flex flex-wrap gap-2 mb-3">
+            <span class="feature-badge">
+                <i class="fas fa-bolt text-warning me-1"></i>Stok Terbatas
+            </span>
+            <span class="feature-badge">
+                <i class="fas fa-shield-alt text-success me-1"></i>Garansi 7 Hari
+            </span>
+            <span class="feature-badge">
+                <i class="fas fa-truck text-primary me-1"></i>COD + Pickup
+            </span>
         </div>
 
-        <ul class="detail-specs mt-3 mb-0">
-            <li>Komp. semua tipe</li>
+        <!-- Specifications -->
+        <h6 class="fw-bold mb-3">
+            <i class="fas fa-list-check me-2" style="color: var(--primary);"></i>Spesifikasi
+        </h6>
+        <ul class="detail-specs">
+            <li>Komp. semua tipe motor</li>
             <li>OEM & aftermarket</li>
-            <li>Siap kirim</li>
-            <li>Kurir ekspres</li>
+            <li>Siap kirim hari ini</li>
+            <li>Kurir ekspres & regular</li>
         </ul>
     </div>
 
-    <div class="mt-4">
-        <h6 class="fw-bold">Deskripsi Produk</h6>
-        <p class="text-muted small mb-3">{{ product.description or "Belum ada deskripsi untuk produk ini." }}</p>
+    <!-- Description -->
+    <div class="card-soft mb-4">
+        <h6 class="fw-bold mb-3">
+            <i class="fas fa-align-left me-2" style="color: var(--primary);"></i>Deskripsi Produk
+        </h6>
+        <p class="text-muted mb-3">
+            {{ product.description or "Belum ada deskripsi untuk produk ini." }}
+        </p>
+        
+        <!-- Info List -->
         <div class="d-flex flex-column gap-2">
-            <div class="d-flex align-items-center gap-2 text-muted small">
-                <i class="fas fa-shield-alt text-success"></i> Garansi 7 hari untuk cacat pabrik
+            <div class="d-flex align-items-center gap-2 text-muted">
+                <div class="thumb-icon" style="width: 40px; height: 40px; font-size: 1rem;">
+                    <i class="fas fa-shield-alt text-success"></i>
+                </div>
+                <div>
+                    <strong>Garansi 7 hari</strong> untuk cacat pabrik
+                </div>
             </div>
-            <div class="d-flex align-items-center gap-2 text-muted small">
-                <i class="fas fa-truck text-primary"></i> Pengiriman cepat ke seluruh Indonesia
+            <div class="d-flex align-items-center gap-2 text-muted">
+                <div class="thumb-icon" style="width: 40px; height: 40px; font-size: 1rem;">
+                    <i class="fas fa-truck text-primary"></i>
+                </div>
+                <div>
+                    <strong>Pengiriman cepat</strong> ke seluruh Indonesia
+                </div>
+            </div>
+            <div class="d-flex align-items-center gap-2 text-muted">
+                <div class="thumb-icon" style="width: 40px; height: 40px; font-size: 1rem;">
+                    <i class="fas fa-headset text-secondary"></i>
+                </div>
+                <div>
+                    <strong>Konsultasi gratis</strong> dengan teknisi kami
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="card-soft mt-4">
+    <!-- Shipping Info -->
+    <div class="card-soft mb-4">
         <div class="d-flex justify-content-between align-items-start gap-3">
             <div>
-                <h6 class="mb-1 fw-bold">Info Pengiriman</h6>
-                <p class="small text-muted mb-0">Tersedia dari 2 gudang utama (Jakarta & Surabaya).</p>
+                <h6 class="fw-bold mb-1">
+                    <i class="fas fa-shipping-fast me-2" style="color: var(--primary);"></i>Info Pengiriman
+                </h6>
+                <p class="small text-muted mb-0">
+                    Tersedia dari 2 gudang utama (Jakarta & Surabaya).
+                </p>
             </div>
             <div class="text-end">
-                <small class="text-muted">Estimasi 2-3 hari</small>
-                <div class="fw-bold text-primary">Gratis Ongkir</div>
+                <small class="text-muted d-block">Estimasi 2-3 hari</small>
+                <strong class="text-success">Gratis Ongkir <i class="fas fa-tag ms-1"></i></strong>
+            </div>
+        </div>
+    </div>
+
+    <!-- Related Products Note -->
+    <div class="info-card mb-4" style="background: var(--primary-50);">
+        <div class="d-flex align-items-center gap-3">
+            <div class="thankyou-icon" style="width: 48px; height: 48px; font-size: 1.2rem;">
+                <i class="fas fa-lightbulb"></i>
+            </div>
+            <div>
+                <strong class="d-block mb-1">Tips Belanja</strong>
+                <small class="text-muted">
+                    Cek produk terkait untuk mendapatkan paket hemat spare part motor Anda.
+                </small>
             </div>
         </div>
     </div>
@@ -68,11 +134,16 @@
     <div class="container d-flex justify-content-between align-items-center gap-3">
         <div>
             <div class="text-muted small">Total</div>
-            <div class="fw-bold">Rp {{ "%.0f"|format(product.price) }}</div>
+            <div class="fw-bold fs-5">Rp {{ "{:,}".format(product.price | round(0, 'floor') | int).replace(",", ".") }}</div>
         </div>
-        <div class="d-flex gap-2">
-            <a href="javascript:history.back()" class="btn btn-outline-secondary">Kembali</a>
-            <a href="{{ url_for('add_to_cart', id=product.id) }}" class="btn btn-primary">Tambah</a>
+        <div class="d-flex gap-2 flex-fill justify-content-end">
+            <a href="javascript:history.back()" class="btn btn-outline-secondary">
+                <i class="fas fa-arrow-left"></i>
+            </a>
+            <a href="{{ url_for('add_to_cart', id=product.id) }}" class="btn btn-primary flex-fill">
+                <i class="fas fa-cart-plus"></i>
+                <span class="d-none d-sm-inline ms-1">Tambah</span>
+            </a>
         </div>
     </div>
 </div>
