@@ -1,4 +1,5 @@
--- InnoDB MySQL Data Seeding - ready to inject into the `products` table 
+-- Seed data for MotoSpare Mart (MySQL)
+-- Compatible with `Front-End/P11 Proxy/Tugas/app.py` which queries the `products` table.
 
 CREATE TABLE IF NOT EXISTS products (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -9,6 +10,7 @@ CREATE TABLE IF NOT EXISTS products (
     image VARCHAR(255),
     INDEX idx_products_category (category)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 
 INSERT INTO products (name, category, description, price, image) VALUES
 ('Oli Mesin 10W-40 (1L)', 'oli', 'Oli mesin semi-sintetik 10W-40 untuk motor harian. Membantu menjaga performa dan suhu mesin.', 65000.00, 'Mesin10w40.webp'),

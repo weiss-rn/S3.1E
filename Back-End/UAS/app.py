@@ -288,15 +288,6 @@ def admin_root():
 
 @app.route('/admin/login', methods=['GET', 'POST'], strict_slashes=False)
 def admin_login():
-    # =========================================
-    # FRONTEND ONLY - READ-ONLY APPLICATION
-    # =========================================
-    # Admin login is DISABLED - this is a frontend UI demonstration
-    # CRUD operations are available only in the Backend (UAS) application
-    # Product management must be done through the backend for data integrity
-    flash("Admin login tidak tersedia di frontend. Gunakan backend untuk manajemen produk.", "info")
-    return redirect(url_for("index"))
-    
     next_url = (
         request.args.get("next")
         or request.form.get("next")
@@ -319,19 +310,12 @@ def admin_login():
 
 @app.route('/admin/logout', strict_slashes=False)
 def admin_logout():
-    # FRONTEND ONLY: Logout disabled - this frontend is read-only
     session.pop("is_admin", None)
     flash("Anda telah keluar.", "success")
-    return redirect(url_for("index"))
+    return redirect(url_for("admin_login"))
 
 @app.route('/admin/products', strict_slashes=False)
 def admin_products():
-    # FRONTEND ONLY: Admin dashboard is DISABLED
-    # This frontend is for display-only - database modifications are not allowed
-    # Please use the Backend (UAS) application for product management
-    flash("Manajemen produk tidak tersedia di frontend. Akses backend untuk CRUD operasi.", "warning")
-    return redirect(url_for("index"))
-    
     q = (request.args.get("q") or "").strip()
     category = (request.args.get("category") or "semua").strip().lower()
     if category not in CATEGORY_BY_SLUG:
@@ -347,12 +331,6 @@ def admin_products():
 
 @app.route('/admin/products/add', methods=['GET', 'POST'], strict_slashes=False)
 def admin_add_product():
-    # FRONTEND ONLY: Add product function is DISABLED
-    # This frontend displays products only - use Backend (UAS) to add new products
-    # Database write operations are disabled in this frontend version
-    flash("Menambah produk tidak tersedia di frontend. Gunakan backend untuk operasi ini.", "warning")
-    return redirect(url_for("products"))
-    
     form_data = None
     if request.method == 'POST':
         form_data = {
@@ -424,12 +402,6 @@ def admin_add_product():
 
 @app.route('/admin/products/<int:product_id>/edit', methods=['GET', 'POST'], strict_slashes=False)
 def admin_edit_product(product_id):
-    # FRONTEND ONLY: Edit product function is DISABLED
-    # Database modifications are not allowed in this frontend version
-    # Product updates must be done through the Backend (UAS) application
-    flash("Mengedit produk tidak tersedia di frontend. Gunakan backend untuk update data.", "warning")
-    return redirect(url_for("products"))
-    
     product = _get_product(product_id)
     if not product:
         abort(404)
@@ -505,12 +477,6 @@ def admin_edit_product(product_id):
 
 @app.route('/admin/products/<int:product_id>/delete', methods=['POST'], strict_slashes=False)
 def admin_delete_product(product_id):
-    # FRONTEND ONLY: Delete product function is DISABLED
-    # This frontend is read-only - product deletions must be done through the Backend
-    # No database write operations are performed in this frontend version
-    flash("Menghapus produk tidak tersedia di frontend. Gunakan backend untuk delete.", "warning")
-    return redirect(url_for("products"))
-    
     with db_cursor(commit=True) as cursor:
         cursor.execute("DELETE FROM products WHERE id = %s", (product_id,))
         deleted = cursor.rowcount
