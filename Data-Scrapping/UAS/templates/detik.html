@@ -121,7 +121,7 @@
             </thead>
             <tbody>
                 {% for article in articles %}
-                <tr class="{% if loop.index|is_prime %}red{% else %}green{% endif %}">
+                <tr class="{% if loop.index|valid_prime %}red{% else %}green{% endif %}">
                     <td class="row-no">{{ loop.index }}</td>
                     <td class="row-image">
                         {% if article.image != "No image" %}
@@ -146,7 +146,7 @@
     </div>
     
     <div class="footer">
-        <p>© 2023 Detik News Scraper</p>
+        <p>Built With Flask</p>
     </div>
 </body>
 </html>

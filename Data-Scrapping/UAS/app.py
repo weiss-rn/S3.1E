@@ -43,7 +43,7 @@ def detik():
     except Exception as e:
         return f"An error occurred: {str(e)}", 500
 
-def is_prime(n):
+def if_the_list_prime(n):
     if n < 2:
         return False
     for i in range(2, int(n ** 0.5) + 1):
@@ -51,7 +51,7 @@ def is_prime(n):
             return False
     return True
 
-app.jinja_env.filters['is_prime'] = is_prime
+app.jinja_env.filters['valid_prime'] = if_the_list_prime
 
 if __name__ == '__main__':
     app.run(debug=True)
