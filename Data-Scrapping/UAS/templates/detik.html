@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detik News - Scraped Articles</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+        
+        .header {
+            margin-bottom: 20px;
+        }
+        
+        .header a {
+            color: blue;
+            text-decoration: underline;
+            margin-right: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-collapse: collapse;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        table th {
+            background-color: #333;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+            font-weight: bold;
+        }
+        
+        table td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            vertical-align: top;
+        }
+        
+        .row-no {
+            width: 60px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .row-image {
+            width: 200px;
+            text-align: center;
+        }
+        
+        .row-image img {
+            max-width: 100%;
+            height: auto;
+            max-height: 150px;
+        }
+        
+        .row-title {
+            flex: 1;
+        }
+        
+        .row-title a {
+            color: blue;
+            text-decoration: underline;
+        }
+        
+        .green {
+            background-color: #00ff00;
+        }
+        
+        .red {
+            background-color: #ff0000;
+        }
+        
+        .no-articles {
+            text-align: center;
+            padding: 50px;
+            color: #666;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #777;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="/">Home</a>
+        <a href="#">Detik Populer</a>
+    </div>
+    
+    <div class="container">
+        {% if articles %}
+        <table>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Foto</th>
+                    <th>Judul</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for article in articles %}
+                <tr class="{% if loop.index|is_prime %}red{% else %}green{% endif %}">
+                    <td class="row-no">{{ loop.index }}</td>
+                    <td class="row-image">
+                        {% if article.image != "No image" %}
+                            <img src="{{ article.image }}" alt="Article Image" onerror="this.style.display='none'">
+                        {% endif %}
+                    </td>
+                    <td class="row-title">
+                        <a href="#">{{ article.title }}</a>
+                        <br>
+                        <small>{{ article.date if article.date != "No date" else "Date not available" }}</small>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <div class="no-articles">
+            <h2>No Articles Found</h2>
+            <p>Sorry, no articles could be scraped at this time.</p>
+        </div>
+        {% endif %}
+    </div>
+    
+    <div class="footer">
+        <p>© 2023 Detik News Scraper</p>
+    </div>
+</body>
+</html>
